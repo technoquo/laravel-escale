@@ -9,35 +9,18 @@
                     </p>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-1.jpg" alt="" />
-                            <h5>Christiane Catherin</h5>
-                            <span class="text-primary">Présidente</span>
+                    @foreach ($organes as $organe)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item rounded overflow-hidden pb-4">
+                                <img class="img-fluid mb-4" src="{{ asset('storage/' . $organe->image) }}"
+                                    alt="{{ $organe->firstname . '  ' . $organe->lastname }}" />
+                                <h5>{{ $organe->firstname . '  ' . $organe->lastname }}</h5>
+                                <span class="text-primary">{{ $organe->position }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-2.jpg" alt="" />
-                            <h5>Michel Duponcelle</h5>
-                            <span class="text-primary">Trésorier</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-3.jpg" alt="" />
-                            <h5>Evelyne Devuyst</h5>
-                            <span class="text-primary">Secrétarie</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-4.jpg" alt="" />
-                            <h5>François Bauduin</h5>
-                            <span class="text-primary">Administrateur</span>
+                    @endforeach
 
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="Direction mt-5">
@@ -45,14 +28,16 @@
                     <p class="fs-5 fw-medium text-primary">Direction</p>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-1.jpg" alt="" />
-                            <h5>Muriel Brunneval</h5>
-                            <span class="text-primary">Direction</span>
-
+                    @foreach ($directions as $direction)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item rounded overflow-hidden pb-4">
+                                <img class="img-fluid mb-4" src="{{ asset('storage/' . $direction->image) }}"
+                                    alt="{{ $direction->firstname . '  ' . $direction->lastname }}" />
+                                <h5>{{ $direction->firstname . '  ' . $direction->lastname }}</h5>
+                                <span class="text-primary">{{ $direction->position }}</span>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="accompagnement mt-5">
@@ -60,34 +45,16 @@
                     <p class="fs-5 fw-medium text-primary">Accompagnateurs</p>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-1.jpg" alt="" />
-                            <h5>Adil Ahmed</h5>
-
+                    @foreach ($acompagnateurs as $acompagnateur)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item rounded overflow-hidden pb-4">
+                                <img class="img-fluid mb-4" src="{{ asset('storage/' . $acompagnateur->image) }}"
+                                    alt="{{ $acompagnateur->firstname . '  ' . $acompagnateur->lastname }}" />
+                                <h5>{{ $acompagnateur->firstname . '  ' . $acompagnateur->lastname }}</h5>
+                                <span class="text-primary">{{ $acompagnateur->position }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-2.jpg" alt="" />
-                            <h5>Frédérique Van Evelghem</h5>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-3.jpg" alt="" />
-                            <h5>Pascale Nossin</h5>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-4.jpg" alt="" />
-                            <h5>Anouchka Pire</h5>
-
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="animatrice mt-5">
@@ -97,48 +64,16 @@
                     </p>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-1.jpg" alt="" />
-                            <h5>Carole Rettmann</h5>
-                            <ul class="team-social">
-                                <li>
-                                    <a class="btn btn-square" href=""><i class="fab fa-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-square" href=""><i class="fa fa-envelope"></i></a>
-                                </li>
-                            </ul>
+                    @foreach ($animatrices as $animatrice)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item rounded overflow-hidden pb-4">
+                                <img class="img-fluid mb-4" src="{{ asset('storage/' . $animatrice->image) }}"
+                                    alt="{{ $animatrice->firstname . '  ' . $animatrice->lastname }}" />
+                                <h5>{{ $animatrice->firstname . '  ' . $animatrice->lastname }}</h5>
+                                <span class="text-primary">{{ $animatrice->position }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-2.jpg" alt="" />
-                            <h5>Danitza Athanassiadis</h5>
-                            <ul class="team-social">
-                                <li>
-                                    <a class="btn btn-square" href=""><i class="fab fa-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-square" href=""><i class="fa fa-envelope"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item rounded overflow-hidden pb-4">
-                            <img class="img-fluid mb-4" src="img/team-4.jpg" alt="" />
-                            <h5>Gabrielle Van Zuylen</h5>
-                            <ul class="team-social">
-                                <li>
-                                    <a class="btn btn-square" href=""><i class="fab fa-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-square" href=""><i class="fa fa-envelope"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

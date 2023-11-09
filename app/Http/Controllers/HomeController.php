@@ -20,34 +20,6 @@ class HomeController extends Controller
         ]);
     }
 
-
-
-    public function mission()
-    {
-        return view('mission');
-    }
-
-    public function public()
-    {
-        return view('public');
-    }
-
-    public function individuel()
-    {
-        return view('individuel');
-    }
-
-
-    public function collecfit()
-    {
-        return view('collecfit');
-    }
-
-    public function equipe()
-    {
-        return view('equipe');
-    }
-
     public function organigramme()
     {
         return view('organigramme');

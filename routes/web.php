@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\AccompagnementController;
 use App\Http\Controllers\AccompagnementTypeController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ use App\Http\Controllers\AccompagnementTypeController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/accompagnement/{slug}', [AccompagnementController::class, 'index'])->name('accompagnement');
 Route::get('/type/{slug}', [AccompagnementTypeController::class, 'index'])->name('type');
-Route::get('/accompagnement-equipe', [HomeController::class, 'equipe'])->name('equipe');
+Route::get('/accompagnement-equipe', [TeamController::class, 'index'])->name('equipe');
 Route::get('/organigramme', [HomeController::class, 'organigramme'])->name('organigramme');
 Route::get('/document', [HomeController::class, 'document'])->name('document');
 Route::get('/photos', [HomeController::class, 'photos'])->name('photos');

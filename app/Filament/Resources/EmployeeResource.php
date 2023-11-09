@@ -3,35 +3,37 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
-use App\Models\Post;
 use Filament\Tables;
+use App\Models\Employee;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
+
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\MarkdownEditor;
-use App\Filament\Resources\PostResource\Pages;
+use App\Filament\Resources\EmployeeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PostResource\RelationManagers;
+use App\Filament\Resources\EmployeeResource\RelationManagers;
 
-class PostResource extends Resource
+class EmployeeResource extends Resource
 {
-    protected static ?string $model = Post::class;
+    protected static ?string $model = Employee::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'Accueil';
+    protected static ?string $navigationGroup = 'Equipe';
 
-    protected static ?int $navigationSort = 2;
+
+
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
@@ -40,15 +42,11 @@ class PostResource extends Resource
                 Group::make()
                     ->schema([
                         Section::make([
-                            TextInput::make('title')->live()->required()->minLength(1)->maxLength(150)
-                                ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
-                                    if ($operation === 'edit') {
-                                        return;
-                                    }
-                                    $set('slug', Str::slug($state));
-                                }),
-                            TextInput::make('slug')->required()->unique(ignoreRecord: true),
-                            MarkdownEditor::make('description')
+                            TextInput::make('firstname')->required(),
+                            TextInput::make('lastname')->required(),
+                            TextInput::make('position'),
+                            Select::make('administration_id')
+                                ->relationship('administrations', 'organe')
                                 ->required(),
                             Toggle::make('status')
                                 ->onColor('success')
@@ -62,22 +60,10 @@ class PostResource extends Resource
                         Section::make([
                             FileUpload::make('image')
                                 ->disk('public')
-                                ->directory('thumbnail'),
-                            TextInput::make('alt')
-                                ->label('Alterner'),
-                            TextInput::make('youtube')
-                                ->label('Youtube'),
-                            TextInput::make('vimeo')
-                                ->label('Vimeo'),
-                            Toggle::make('share_facebook')
-                                ->onColor('success')
-                                ->offColor('danger')
-                                ->default(false),
-                            Toggle::make('whatsapp')
-                                ->onColor('success')
-                                ->offColor('danger')
-                                ->default(false),
-                            TextInput::make('link'),
+                                ->directory('thumbnail')
+                                ->required()
+
+
                         ])
 
                     ]),
@@ -89,8 +75,20 @@ class PostResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('image'),
-                TextColumn::make('title')
-                    ->label('Titre')
+                TextColumn::make('firstname')
+                    ->label('nom')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('lastname')
+                    ->label('noms')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('position')
+                    ->label('position')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('position.organe')
+                    ->label('Administration')
                     ->searchable()
                     ->sortable(),
                 IconColumn::make('status')
@@ -123,9 +121,9 @@ class PostResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPosts::route('/'),
-            'create' => Pages\CreatePost::route('/create'),
-            'edit' => Pages\EditPost::route('/{record}/edit'),
+            'index' => Pages\ListEmployees::route('/'),
+            'create' => Pages\CreateEmployee::route('/create'),
+            'edit' => Pages\EditEmployee::route('/{record}/edit'),
         ];
     }
 }
