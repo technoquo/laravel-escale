@@ -20,15 +20,9 @@ class HomeController extends Controller
         ]);
     }
 
-    public function organigramme()
-    {
-        return view('organigramme');
-    }
 
-    public function document()
-    {
-        return view('document');
-    }
+
+
 
 
     public function photos()

@@ -621,6 +621,10 @@ input:checked+.slider:before {
     background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1));
 }
 
+.margin-top-30 {
+    margin-top: 30px;
+}
+
 /****  FIN PERSONALIZADO ****/
 body{
     background-color: var(--body);

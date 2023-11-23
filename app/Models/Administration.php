@@ -12,4 +12,10 @@ class Administration extends Model
     use HasFactory;
 
     protected $fillable = ['organe'];
+
+    // Define the relationship with Employee
+    public function employees()
+    {
+        return $this->hasMany(Employee::class, 'administrations_id');
+    }
 }

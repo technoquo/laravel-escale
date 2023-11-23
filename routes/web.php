@@ -7,6 +7,8 @@ use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\AccompagnementController;
 use App\Http\Controllers\AccompagnementTypeController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\OrganigrammeController;
 use App\Http\Controllers\TeamController;
 
 /*
@@ -24,8 +26,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/accompagnement/{slug}', [AccompagnementController::class, 'index'])->name('accompagnement');
 Route::get('/type/{slug}', [AccompagnementTypeController::class, 'index'])->name('type');
 Route::get('/accompagnement-equipe', [TeamController::class, 'index'])->name('equipe');
-Route::get('/organigramme', [HomeController::class, 'organigramme'])->name('organigramme');
-Route::get('/document', [HomeController::class, 'document'])->name('document');
+Route::get('/organigramme', [OrganigrammeController::class, 'index'])->name('organigramme');
+Route::get('/document', [DocumentController::class, 'index'])->name('document');
 Route::get('/photos', [HomeController::class, 'photos'])->name('photos');
 Route::get('/historique', [HomeController::class, 'historique'])->name('historique');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

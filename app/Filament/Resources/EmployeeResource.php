@@ -45,7 +45,7 @@ class EmployeeResource extends Resource
                             TextInput::make('firstname')->required(),
                             TextInput::make('lastname')->required(),
                             TextInput::make('position'),
-                            Select::make('administration_id')
+                            Select::make('administrations_id')
                                 ->relationship('administrations', 'organe')
                                 ->required(),
                             Toggle::make('status')
