@@ -44,7 +44,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-nav-white navbar-light p-lg-0">
                 <a href="/" class="navbar-brand d-lg-none">
-                    <img src="images/logo-escale.png" />
+                    <img src="{{ asset('images/logo-escale.png') }}" />
                 </a>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -59,9 +59,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="/" class="escale actualit nav-item nav-link active">Actualités</a>
+                        <a href="/"
+                            class="escale actualit nav-item nav-link  {{ request()->is('/') ? 'active' : '' }}">Actualités</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="escale accompagnement nav-link dropdown-toggle"
+                            <a href="#"
+                                class="escale accompagnement nav-link dropdown-toggle  {{ request()->is('accompagnement/*') ? 'active' : '' }}"
                                 data-bs-toggle="dropdown">Accompagnement</a>
                             <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
                                 <a href="{{ route('accompagnement', 'notre-asbl') }}" class="dropdown-item">Notre
@@ -81,7 +83,8 @@
                                 <a href="{{ route('document') }}" class="dropdown-item">Documents</a>
                             </div>
                         </div>
-                        <a href="{{ route('photos') }}" class="escale photos nav-item nav-link">Photos</a>
+                        <a href="{{ route('years') }}"
+                            class="escale photos nav-item nav-link {{ request()->is('années') ? 'active' : '' }}">Photos</a>
                         <a href="{{ route('historique') }}" class="escale historique nav-item nav-link">Historique</a>
                         <a href="{{ route('contact') }}" class="escale evenements nav-item nav-link">Contact</a>
 

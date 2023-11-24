@@ -170,7 +170,7 @@ ul.galeria-imagenes {
 }*/
 
 .galeria-imagenes img {
-    height: 300px;
+    
     object-fit: cover;
 }
 

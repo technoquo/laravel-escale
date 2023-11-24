@@ -24,17 +24,6 @@ class HomeController extends Controller
 
 
 
-
-    public function photos()
-    {
-        return view('photos');
-    }
-
-    public function historique()
-    {
-        return view('historique');
-    }
-
     public function contact()
     {
         return view('contact');
