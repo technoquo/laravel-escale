@@ -16,6 +16,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\MarkdownEditor;
@@ -49,7 +50,25 @@ class PostResource extends Resource
                                 }),
                             TextInput::make('slug')->required()->unique(ignoreRecord: true),
                             MarkdownEditor::make('description')
+                                ->toolbarButtons([
+                                    'attachFiles',
+                                    'blockquote',
+                                    'bold',
+                                    'bulletList',
+                                    'codeBlock',
+                                    'heading',
+                                    'italic',
+                                    'link',
+                                    'orderedList',
+                                    'redo',
+                                    'strike',
+                                    'table',
+                                    'undo',
+                                ])
                                 ->required(),
+                            DatePicker::make('date_published')
+                                ->native(false)
+                                ->displayFormat('d/m/Y'),
                             Toggle::make('status')
                                 ->onColor('success')
                                 ->offColor('danger')
@@ -91,6 +110,10 @@ class PostResource extends Resource
                 ImageColumn::make('image'),
                 TextColumn::make('title')
                     ->label('Titre')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('date_published')
+                    ->date('d/m/Y')
                     ->searchable()
                     ->sortable(),
                 IconColumn::make('status')

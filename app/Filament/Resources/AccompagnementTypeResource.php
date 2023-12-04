@@ -57,6 +57,9 @@ class AccompagnementTypeResource extends Resource
                 Group::make()
                     ->schema([
                         Section::make([
+                            TextInput::make('video')
+                                ->label('Vimeo')
+                                ->required(),
                             FileUpload::make('image')
                                 ->required()
                                 ->disk('public')

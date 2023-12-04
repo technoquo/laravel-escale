@@ -13,19 +13,10 @@ class HomeController extends Controller
     {
 
         $sliders = Slider::where('status', 1)->get();
-        $posts = Post::where('status', 1)->get();
+        $posts = Post::where('status', 1)->orderBy('date_published', 'desc')->paginate(10);
         return view('home', [
             'sliders' => $sliders,
             'posts' => $posts
         ]);
-    }
-
-
-
-
-
-    public function contact()
-    {
-        return view('contact');
     }
 }

@@ -1,17 +1,20 @@
     <!-- Footer Start -->
+    @php
+        $contact = DB::table('contacts')->first();
+
+    @endphp
     <div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Nos bureaux</h4>
                     <p class="mb-2">
-                        <i class="fa fa-map-marker-alt me-3" id="line-map"></i>Rue Jacques Jansen 17 -
-                        1030 Schaerbeek
+                        <i class="fa fa-map-marker-alt me-3" id="line-map"></i>{{ $contact->bureau }}
                     </p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>02/218.79.01</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $contact->tel }}</p>
                     <p class="mb-2">
                         <i class="fab fa-whatsapp me-3"></i> <a href="https://api.whatsapp.com/send?phone=472172609"
-                            target="_blank" class="text-white">0472/17.26.09</a>
+                            target="_blank" class="text-white">{{ $contact->gsm }}</a>
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -21,18 +24,11 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Horaire</h4>
                     <p class="mb-1">Lundi - Vendredi</p>
-                    <h6 class="text-light">09:00 am - 05:00 pm</h6>
+                    <h6 class="text-light">{{ $contact->horaire }}</h6>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Don</h4>
-                    <p>
-                        Pour nous soutenir dans notre action, vous pouvez nous faire un
-                        don.
-                    </p>
-                    <p>Tout don, dès 40€ est déductible fiscalement à 45 %.</p>
-                    <p>Compte bancaire:
-                    <div><strong>BE24 068216272338</strong></div>
-                    </p>
+                    {!! str_replace('<p>', '<p class="mb-4">', str($contact->don)->markdown()) !!}
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <h1 class="display-5 mb-4">{{ $post->title }}</h1>
+                    <h1 class="display-5 mb-4 title">{{ $post->title }}</h1>
                     <p>
                     </p>
                     @if ($post->share_facebook || $post->whatsapp)
@@ -17,7 +17,7 @@
                             @endif
                         </div>
                     @endif
-                    {!! str_replace('<p>', '<p class="mb-4">', str($post->description)->markdown()) !!}
+                    {!! str_replace('<p>', '<p class="mb-4 box">', str($post->description)->markdown()) !!}
                 </div>
 
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s"
@@ -45,10 +45,6 @@
                         </div>
                     @endif
                 </div>
-
-
-
-
             </div>
         </div>
     </div>

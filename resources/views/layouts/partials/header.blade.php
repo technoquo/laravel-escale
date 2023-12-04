@@ -13,22 +13,28 @@
                 <a href="/">
                     <img src="{{ asset('images/logo-escale.png') }}" />
                 </a>
+
+                @php
+                    $contact = DB::table('contacts')->first();
+
+                @endphp
+
+
                 <div class="ms-auto d-flex align-items-center">
-                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>Rue Jacques Jansen 17 -
-                        1030 Schaerbeek</small>
-                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>02/218.79.01
+                    <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>{{ $contact->bureau }}</small>
+                    <small class="ms-4"><i class="fa fa-phone-alt me-3">{{ $contact->tel }}</i>
                     </small>
                     <small class="ms-4"><i class="fab fa-whatsapp me-3"></i> <a
                             href="https://api.whatsapp.com/send?phone=472172609" target="_blank"
-                            class="text-white">0472/17.26.09</a></small>
+                            class="text-white">{{ $contact->gsm }}</a></small>
 
                     <div class="ms-3 d-flex">
-                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href=""><i
-                                class="fab fa-instagram"></i></a>
-                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2" href=""><i
-                                class="fa fa-envelope"></i></a>
+                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                            href="{{ $contact->facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                            href="{{ $contact->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2"
+                            href="mailto:{{ $contact->email }}"><i class="fa fa-envelope"></i></a>
                         <a class="text-white ms-3" href="">RGPD</a>
                     </div>
                 </div>

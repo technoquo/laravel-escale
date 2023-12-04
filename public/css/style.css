@@ -54,7 +54,6 @@
 /***  PERSONALIZADO ***/
 
 
-
 .bg-primary {
     background-color: var(--defecto) !important;
 }
@@ -1213,5 +1212,41 @@ body{
 
 .copyright a:hover {
     color: var(--primary) !important;
+}
+
+/** PAGINATOR ***/
+/* livewire/custom-pagination-links.blade.php */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.pagination span,
+.pagination a {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 4px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.pagination .active span {
+    z-index: 2;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+.pagination span:hover,
+.pagination a:hover {
+    cursor: pointer;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
 }
 

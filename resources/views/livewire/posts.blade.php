@@ -1,5 +1,5 @@
 <div class="container-sm">
-    @foreach ($this->posts as $post)
+    @foreach ($posts as $post)
         <div class="card mb-3" style="max-width: 540px;">
             <a href="{{ route('post.index', $post->slug) }}">
                 <div class="row g-0">
@@ -20,11 +20,13 @@
                             <h5 class="card-title"> {{ $post->title }}</h5>
                             <p class="card-text"> {{ substr($post->description, 0, 100) . '...' }}</p>
                             <p class="card-text"><small
-                                    class="text-body-secondary">{{ $post->created_at->diffForHumans() }}</small></p>
+                                    class="text-body-secondary">{{ is_string($post->date_published) ? \Carbon\Carbon::parse($post->date_published)->format('d-m-Y') : $post->date_published->format('d-m-Y') }}</small>
+                            </p>
                         </div>
                     </div>
                 </div>
             </a>
         </div>
     @endforeach
+    {{ $posts->links('livewire.custom-pagination-links') }}
 </div>

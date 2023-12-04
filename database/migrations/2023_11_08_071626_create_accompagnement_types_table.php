@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('slug');
             $table->string('image');
+            $table->string('video');
             $table->string('name_type_1')->nullable();
             $table->string('description_roi')->nullable();
             $table->string('attachment_roi')->nullable();

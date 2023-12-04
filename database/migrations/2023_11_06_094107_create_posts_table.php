@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('share_facebook')->default(true);
             $table->boolean('whatsapp')->default(true);
             $table->string('link')->nullable();
+            $table->date('date_published')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
