@@ -13,7 +13,7 @@ class Employee extends Model
     protected $fillable = ['firstname', 'lastname', 'position', 'image', 'position', 'administrations_id', 'status'];
 
 
-    public function administration()
+    public function administrations()
     {
         return $this->belongsTo(Administration::class, 'administrations_id');
     }
