@@ -14,7 +14,7 @@
                     <div class="row g-4">
                         @php
                             $employeeIds = explode(',', $employee['employee_ids']);
-                            $employees = \App\Models\Employee::whereIn('id', $employeeIds)->get();
+                            $employees = \App\Models\Employee::whereIn('id', $employeeIds)->where('status', 1)->get();
                         @endphp
                         @foreach ($employees as $employee)
                             <div class="d-flex justify-content-center col-lg-3 col-md-6 wow fadeInUp"
