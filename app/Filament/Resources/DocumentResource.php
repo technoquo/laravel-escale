@@ -63,7 +63,7 @@ class DocumentResource extends Resource
                         return response()->download($pdfPath);
                     }),
                 IconColumn::make('status')
-                    ->label('statut')
+                    ->label('status')
                     ->toggleable()
                     ->sortable()
                     ->boolean()
