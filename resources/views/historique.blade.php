@@ -21,7 +21,7 @@
                                 <div class="js-timeline_item ag-timeline_item">
                                     <div class="ag-timeline-card_box">
                                         <div class="js-timeline-card_point-box ag-timeline-card_point-box">
-                                            <div class="text-center bg-primary text-white font-weight-bold py-2 px-3 rounded">{{ $historique->year }}</div>
+                                            <div class="ag-timeline-card_point">{{ $historique->year }}</div>
                                         </div>
                                     </div>
                                     <div class="ag-timeline-card_item">
