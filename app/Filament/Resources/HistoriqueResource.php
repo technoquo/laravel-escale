@@ -42,7 +42,7 @@ class HistoriqueResource extends Resource
                             MarkdownEditor::make('description')
                                 ->required(),
                             TextInput::make('year')
-                                ->label('année')
+                                ->label('Titre')
                                 ->required(),
                             Toggle::make('status')
                                 ->onColor('success')
@@ -70,7 +70,7 @@ class HistoriqueResource extends Resource
             ->columns([
 
                 TextColumn::make('year')
-                    ->label('année'),
+                    ->label('Titre'),
                 IconColumn::make('status')
                     ->toggleable()
                     ->sortable()

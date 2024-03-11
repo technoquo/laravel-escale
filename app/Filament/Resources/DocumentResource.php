@@ -37,7 +37,7 @@ class DocumentResource extends Resource
                 TextInput::make('description')
                     ->label('Description'),
                 TextInput::make('svg'),
-                Toggle::make('statut')
+                Toggle::make('status')
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(true),
