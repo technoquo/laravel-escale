@@ -6,17 +6,21 @@
                 <div class="col-lg-6">
                     <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 300px">
                         @if ($asbl->youtube)
-                            <button type="button" class="btn-play" data-bs-toggle="modal"
+                            {{-- <button type="button" class="btn-play" data-bs-toggle="modal"
                                 data-src="https://www.youtube.com/embed/{{ $asbl->youtube }}"
                                 data-bs-target="#videoModal">
                                 <span></span>
-                            </button>
+                            </button> --}}
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $asbl->youtube }}"> 
+                            </iframe>
                         @else
-                            <button type="button" class="btn-play" data-bs-toggle="modal"
+                            {{-- <button type="button" class="btn-play" data-bs-toggle="modal"
                                 data-src="https://player.vimeo.com/video/{{ $asbl->vimeo }}"
                                 data-bs-target="#videoModal">
                                 <span></span>
-                            </button>
+                            </button> --}}
+                            <iframe width="560" height="315" src="https://player.vimeo.com/video/{{ $asbl->vimeo }}"> 
+                            </iframe>
                         @endif
                     </div>
                 </div>
@@ -32,7 +36,7 @@
     <!-- About End -->
 
     <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
@@ -50,6 +54,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Video Modal End -->
 </x-app-layout>

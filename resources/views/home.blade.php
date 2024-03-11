@@ -39,7 +39,7 @@
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
 
-                <h1 class="display-5 mb-5 title">Notre actualité</h1>
+                <h1 class="display-5 mb-5 title">Nos actualités</h1>
             </div>
 
             <div class="row g-4">
@@ -82,7 +82,7 @@
 
 
                 <div class="mt-5 d-flex justify-content-center"><a href="{{ route('actualites') }}"
-                        class="btn btn-primary rounded-pill py-2 px-3 text-white">voir tous</a></div>
+                        class="btn btn-primary rounded-pill py-2 px-3 text-white">Et plus encore...</a></div>
 
             </div>
 

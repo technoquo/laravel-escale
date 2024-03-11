@@ -11,12 +11,14 @@ use Filament\Resources\Resource;
 use App\Models\AccompagnementType;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\MarkdownEditor;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AccompagnementTypeResource\Pages;
 use App\Filament\Resources\AccompagnementTypeResource\RelationManagers;
@@ -48,7 +50,22 @@ class AccompagnementTypeResource extends Resource
                                     $set('slug', Str::slug($state));
                                 }),
                             TextInput::make('slug')->required()->unique(ignoreRecord: true),
-                            TextInput::make('description')
+                            MarkdownEditor::make('description')
+                                ->toolbarButtons([
+                                    'attachFiles',
+                                    'blockquote',
+                                    'bold',
+                                    'bulletList',
+                                    'codeBlock',
+                                    'heading',
+                                    'italic',
+                                    'link',
+                                    'orderedList',
+                                    'redo',
+                                    'strike',
+                                    'table',
+                                    'undo',
+                                ])
                                 ->required(),
 
                         ])
@@ -66,8 +83,23 @@ class AccompagnementTypeResource extends Resource
                                 ->directory('thumbnail'),
                             TextInput::make('name_type_1')
                                 ->label('Type 1'),
-                            TextInput::make('description_roi')
-                                ->label('Description'),
+                            MarkdownEditor::make('description_roi')
+                                ->label('Description')
+                                ->toolbarButtons([
+                                    'attachFiles',
+                                    'blockquote',
+                                    'bold',
+                                    'bulletList',
+                                    'codeBlock',
+                                    'heading',
+                                    'italic',
+                                    'link',
+                                    'orderedList',
+                                    'redo',
+                                    'strike',
+                                    'table',
+                                    'undo',
+                                ]),
                             FileUpload::make('attachment_roi')
                                 ->required()
                                 ->disk('public')
@@ -75,8 +107,23 @@ class AccompagnementTypeResource extends Resource
                                 ->acceptedFileTypes(['application/pdf']),
                             TextInput::make('name_type_2')
                                 ->label('Type 2'),
-                            TextInput::make('description_convention')
-                                ->label('Description'),
+                            MarkdownEditor::make('description_convention')
+                                ->label('Description')
+                                ->toolbarButtons([
+                                    'attachFiles',
+                                    'blockquote',
+                                    'bold',
+                                    'bulletList',
+                                    'codeBlock',
+                                    'heading',
+                                    'italic',
+                                    'link',
+                                    'orderedList',
+                                    'redo',
+                                    'strike',
+                                    'table',
+                                    'undo',
+                                ]),
                             FileUpload::make('attachment_convention')
                                 ->required()
                                 ->disk('public')

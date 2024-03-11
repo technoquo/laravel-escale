@@ -34,8 +34,7 @@
                         <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2"
                             href="{{ $contact->instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a class="btn btn-sm-square btn-light text-primary rounded-circle ms-2"
-                            href="mailto:{{ $contact->email }}"><i class="fa fa-envelope"></i></a>
-                        <a class="text-white ms-3" href="">RGPD</a>
+                            href="mailto:{{ $contact->email }}"><i class="fa fa-envelope"></i></a>                      
                     </div>
                 </div>
             </div>
@@ -92,7 +91,7 @@
                         <a href="{{ route('years') }}"
                             class="escale photos nav-item nav-link {{ request()->is('années') ? 'active' : '' }}">Photos</a>
                         <a href="{{ route('historique') }}" class="escale historique nav-item nav-link">Historique</a>
-                        <a href="{{ route('contact') }}" class="escale evenements nav-item nav-link">Contact</a>
+                        <a href="{{ route('contact') }}" class="escale contact nav-item nav-link">Contact</a>
 
                     </div>
                     <div class="showtip" id="tooltip"></div>

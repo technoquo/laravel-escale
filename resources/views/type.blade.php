@@ -5,11 +5,13 @@
             <div class="row g-0">
                 <div class="col-lg-6">
                     <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 300px">
-                        <button type="button" class="btn-play" data-bs-toggle="modal"
+                        {{-- <button type="button" class="btn-play" data-bs-toggle="modal"
                             data-src="https://player.vimeo.com/video/{{ $accompagnement->video }}"
                             data-bs-target="#videoModal">
                             <span></span>
-                        </button>
+                        </button> --}}
+                        <iframe width="560" height="315" src="https://player.vimeo.com/video/{{ $accompagnement->video }}"> 
+                        </iframe>
                     </div>
                 </div>
                 <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
@@ -18,7 +20,8 @@
                         </h1>
 
                         <p>
-                            {{ $accompagnement->description }}
+                           
+                            {!! str($accompagnement->description)->markdown() !!} 
                         </p>
                         <div class="row g-5 pt-2 mb-5 download">
                             <div class="col-sm-6">
@@ -69,7 +72,7 @@
     <!-- About End -->
 
     <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
@@ -87,6 +90,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Video Modal End -->
 </x-app-layout>

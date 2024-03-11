@@ -146,33 +146,33 @@ $(".escale")
 function showVideo(e) {
     if (e.hasClass("actualit")) {
         $("#tooltip").html(
-            '<img src="' +
+            '<img with="100" height="100" src="' +
                 window.location.origin +
-                '/images/tooltip/6-8cuentos.gif">'
+                '/images/tooltip/actualite.gif">'
         );
     } else if (e.hasClass("accompagnement")) {
         $("#tooltip").html(
-            '<img src="' +
+            '<img with="100" height="100" src="' +
                 window.location.origin +
-                '/images/tooltip/6-8juegos.gif">'
+                '/images/tooltip/accompagnement.gif">'
         );
     } else if (e.hasClass("photos")) {
         $("#tooltip").html(
-            '<img src="' +
+            '<img with="100" height="100" src="' +
                 window.location.origin +
-                '/images/tooltip/6-8cuentos.gif">'
+                '/images/tooltip/photos.gif">'
         );
     } else if (e.hasClass("historique")) {
         $("#tooltip").html(
-            '<img src="' +
+            '<img with="100" height="100" src="' +
                 window.location.origin +
-                '/images/tooltip/6-8cuentos.gif">'
+                '/images/tooltip/histo.gif">'
         );
-    } else if (e.hasClass("evenements")) {
+    } else if (e.hasClass("contact")) {
         $("#tooltip").html(
-            '<img src="' +
+            '<img with="100" height="100" src="' +
                 window.location.origin +
-                '/images/tooltip/6-8cuentos.gif">'
+                '/images/tooltip/contact.gif">'
         );
     }
 }
