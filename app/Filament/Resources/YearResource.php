@@ -76,7 +76,8 @@ class YearResource extends Resource
             ->columns([
                 ImageColumn::make('image'),
                 TextColumn::make('title')
-                    ->label('Titre'),
+                    ->label('Titre')
+                    ->sortable(),                              
                 IconColumn::make('status')
                     ->toggleable()
                     ->sortable()
