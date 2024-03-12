@@ -63,6 +63,7 @@ class YearResource extends Resource
                                     ->preserveFilenames()
                                     ->image()
                                     ->imageEditor()
+                                    ->required()
                             ])->collapsible(),
 
                     ])
