@@ -2,10 +2,10 @@
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container box">
-            <div class="text-center mx-auto wow fadeInUp mb-5" data-wow-delay="0.1s" style="max-width: 500px">
+            {{-- <div class="text-center mx-auto wow fadeInUp mb-5" data-wow-delay="0.1s" style="max-width: 500px">
                 <p class="fs-5 fw-medium text-primary ">Contactez-nous</p>
                
-            </div>
+            </div> --}}
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <h3 class="mb-4 box">{{ $contact->nom_contact }}</h3>
@@ -70,11 +70,10 @@
                             <span>direction@escaleasbl.be</span>
                         </div>
                     </div>
-                    <iframe class="w-100 rounded"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.9128492311693!2d{{ $longitude }}!3d{{ $latitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c35c43a2ed93%3A0x1aed03cd4076cb2e!2sRue%20Jacques%20Jansen%2017%2C%201030%20Schaerbeek!5e0!3m2!1ses-419!2sbe!4v1686820286488!5m2!1ses-419!2sbe"
-                        frameborder="0" style="min-height: 300px; border: 0" allowfullscreen="" aria-hidden="false"
-                        tabindex="0">
-                    </iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d212.5552029587243!2d{{ $longitude }}!3d{{ $latitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c3596473f3d5%3A0x74be4477403e5a1c!2sEscale%20(l&#39;)%20asbl!5e0!3m2!1ses-419!2sbe!4v1710250000913!5m2!1ses-419!2sbe"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

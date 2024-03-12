@@ -79,7 +79,7 @@
                                     Public</a>
                                 <a href="{{ route('type', 'accompagnement-individuel') }}"
                                     class="dropdown-item">Accompagnement
-                                    Individual</a>
+                                    Individuel</a>
                                 <a href="{{ route('type', 'accompagnement-collectif') }}"
                                     class="dropdown-item">Accompagnement
                                     Collectif</a>
