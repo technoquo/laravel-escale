@@ -12,7 +12,7 @@ class YearController extends Controller
     public function index()
     {
 
-        $years = Year::where('status', 1)->orderBy('title', 'asc')->get();
+        $years = Year::where('status', 1)->orderBy('title', 'desc')->get();
 
         return view('photos', [
             'years' => $years,

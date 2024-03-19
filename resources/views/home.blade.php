@@ -90,4 +90,29 @@
         </div>
     </div>
     <!-- End Notre actualité -->
+
+    <!-- Project Start -->
+    <div class="container-xxl pt-5">
+        <div class="container">
+            <div class="text-center text-md-start pb-5 pb-md-0 wow fadeInUp" data-wow-delay="0.1s"
+                style="max-width: 500px;">
+                <p class="fs-5 fw-medium text-primary">Avec le soutien de</p>
+                {{-- <h1 class="display-5 mb-5">We've Done Lot's of Awesome Projects</h1> --}}
+            </div>
+            <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
+                @foreach ($sponsors as $sponsor) 
+                <div class="project-item mb-5">
+                    <div class="position-relative">
+                        <img class="img-fluid" width="50" height="50" src="{{ asset('storage/' . $sponsor->image) }}" alt="">                        
+                    </div>                   
+                </div>
+                @endforeach
+               
+              
+                
+            </div>
+        </div>
+    </div>
+    <!-- Project End -->
+
 </x-app-layout>

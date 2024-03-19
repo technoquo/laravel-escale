@@ -151,6 +151,7 @@ function showVideo(e) {
                 '/images/tooltip/actualite.gif">'
         );
     } else if (e.hasClass("accompagnement")) {
+        console.log(e)
         $("#tooltip").html(
             '<img with="100" height="100" src="' +
                 window.location.origin +

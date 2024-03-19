@@ -18,8 +18,8 @@
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Lien rapide</h4>
-                    <a class="btn btn-link" href="">Contactez-nous</a>
+                    <h4 class="text-white mb-4">Le lien</h4>
+                    <a class="btn btn-link" href="{{ route('contact') }}">Contactez-nous</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Horaire</h4>

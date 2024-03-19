@@ -68,7 +68,7 @@
                             class="escale actualit nav-item nav-link  {{ request()->is('/') ? 'active' : '' }}">Actualités</a>
                         <div class="nav-item dropdown">
                             <a href="#"
-                                class="escale accompagnement nav-link dropdown-toggle  {{ request()->is('accompagnement/*') ? 'active' : '' }}"
+                                class="escale accompagnement nav-link dropdown-toggle  {{ request()->is('accompagnement') ? 'active' : '' }}"
                                 data-bs-toggle="dropdown">Accompagnement</a>
                             <div class="dropdown-menu bg-light rounded-0 rounded-bottom m-0">
                                 <a href="{{ route('accompagnement', 'notre-asbl') }}" class="dropdown-item">Notre

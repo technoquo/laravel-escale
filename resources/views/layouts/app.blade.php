@@ -71,6 +71,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}?v={{ time() }}"></script>
+    
     @yield('scripts')
 </body>
 

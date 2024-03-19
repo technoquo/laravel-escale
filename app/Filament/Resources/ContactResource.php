@@ -31,15 +31,7 @@ class ContactResource extends Resource
                     ->maxLength(255),
                 Forms\Components\MarkdownEditor::make('description_contact')
                     ->maxLength(65535)
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('acces_bus1')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('acces_bus2')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('acces_tram1')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('acces_tram2')
-                    ->maxLength(255),
+                    ->columnSpanFull(),             
                 Forms\Components\TextInput::make('bureau')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('tel')
@@ -49,9 +41,7 @@ class ContactResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->email()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('googlemap')
-                    ->maxLength(255),
+                    ->maxLength(255),             
                 Forms\Components\TextInput::make('facebook')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('instagram')
@@ -61,6 +51,11 @@ class ContactResource extends Resource
                 Forms\Components\MarkdownEditor::make('don')
                     ->maxLength(65535)
                     ->columnSpanFull(),
+                Forms\Components\FileUpload::make('image')
+                    ->disk('public')
+                    ->directory('thumbnail'),
+                Forms\Components\TextInput::make('alt')
+                    ->label('Alterner'),
             ]);
     }
 
@@ -69,17 +64,7 @@ class ContactResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nom_contact')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('acces_bus1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('acces_bus2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('acces_tram1')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('acces_tram2')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('bureau')
-                    ->searchable(),
+                    ->searchable(),              
                 Tables\Columns\TextColumn::make('tel')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('gsm')

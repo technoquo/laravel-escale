@@ -14,30 +14,54 @@
                     </p>
                     <h3 class="mb-4">Accès par tram et bus :</h3>
                     <div class="d-flex border-bottom pb-3 mb-3">
-                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle">
-                            <i class="fa fa-solid fa-bus text-white"></i>
+                        <div class="flex-shrink-0 btn-square  rounded-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bus-stop" width="76" height="76" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 3m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                                <path d="M18 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                <path d="M10 5h7c2.761 0 5 3.134 5 7v5h-2" />
+                                <path d="M16 17h-8" />
+                                <path d="M16 5l1.5 7h4.5" />
+                                <path d="M9.5 10h7.5" />
+                                <path d="M12 5v5" />
+                                <path d="M5 9v11" />
+                              </svg>
                         </div>
-                        <div class="ms-3">
-                            <div>
-                                <span>{{ $contact->acces_bus1 }}</span>
-                            </div>
-                            <div>
-                                <span>{{ $contact->acces_bus2 }}</span>
+                        <div class="ms-3">                           
+                            <div class="d-flex">
+                             
+                                @foreach ($buses as $bus )
+                                <div class="rounded-circle py-1 px-2 me-1 text-white text-center" style="background-color: {{ $bus->color }}">  {{ $bus->number }} </div>
+                                @endforeach
+                               
                             </div>
                         </div>
                     </div>
                     <div class="d-flex border-bottom pb-3 mb-3">
-                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle">
-                            <i class="fa fa-solid fa-train-tram text-white"></i>
+                        <div class="flex-shrink-0 btn-square  rounded-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-train" width="76" height="76" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M21 13c0 -3.87 -3.37 -7 -10 -7h-8" />
+                                <path d="M3 15h16a2 2 0 0 0 2 -2" />
+                                <path d="M3 6v5h17.5" />
+                                <path d="M3 10l0 4" />
+                                <path d="M8 11l0 -5" />
+                                <path d="M13 11l0 -4.5" />
+                                <path d="M3 19l18 0" />
+                              </svg>
                         </div>
-                        <div class="ms-3">
-                            <div>
-                                <span>{{ $contact->acces_tram1 }}</span>
-                            </div>
-                            <div>
-                                <span>{{ $contact->acces_tram2 }}</span>
+                        <div class="ms-3">                            
+                            <div class="d-flex">
+                             
+                                @foreach ($trams as $tram )
+                                <div class="rounded-circle py-1 px-2 me-1 text-white text-center" style="background-color: {{ $tram->color }}">  {{ $tram->number }} </div>
+                                @endforeach
+                               
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <img class="img-fluid" src="{{ asset('storage/' . $contact->image) }}" alt="{{ $contact->alt }}" />
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
