@@ -43,7 +43,9 @@
             </div>
 
             <div class="row g-4">
+               
                 @forelse ($posts as $post)
+             
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="nouvelle-item position-relative">
                             <a class="text-primary fw-medium" href="{{ route('post.index', $post->slug) }}">
@@ -67,7 +69,7 @@
                                         </p>
                                 </div>
                                 <div class="service-btn rounded-0 rounded-bottom">
-                                    {{ $post->created_at->format('d-m-Y') }} - En savoir plus<i
+                                    {{ date("d-m-Y", strtotime($post->date_published))}} - En savoir plus<i
                                         class="bi bi-chevron-double-right ms-2"></i>
                                 </div>
                             </a>
