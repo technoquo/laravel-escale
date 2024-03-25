@@ -8,7 +8,7 @@
             </div> --}}
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h3 class="mb-4 box">{{ $contact->nom_contact }}</h3>
+                   
                     <p class="mb-4">
                         {{ $contact->description_contact }}
                     </p>
@@ -75,6 +75,16 @@
                             <span>{{ $contact->bureau }}</span>
                         </div>
                     </div>
+                    <div class="d-flex border-bottom pb-3 mb-3">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle">
+                            <i class="fa fa-user text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h6>Direction</h6>
+                            <span>{{ $contact->nom_contact }}</span>
+                        </div>
+                    </div>
+                   
                     <div class="d-flex border-bottom pb-3 mb-3">
                         <div class="flex-shrink-0 btn-square bg-primary rounded-circle">
                             <i class="fa fa-mobile-alt text-white"></i>
