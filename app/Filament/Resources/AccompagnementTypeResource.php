@@ -129,6 +129,13 @@ class AccompagnementTypeResource extends Resource
                                 ->disk('public')
                                 ->directory('pdf')
                                 ->acceptedFileTypes(['application/pdf']),
+                            TextInput::make('name_type_3')
+                                ->label('Type 3'),
+                             FileUpload::make('attachment_scheduler')
+                                ->required()
+                                ->disk('public')
+                                ->directory('pdf')
+                                ->acceptedFileTypes(['application/pdf']),
 
                         ])
 
@@ -146,6 +153,13 @@ class AccompagnementTypeResource extends Resource
                     ->sortable(),
                 IconColumn::make('attachment_roi')
                     ->label('Attachment ROI')
+                    ->trueIcon('heroicon-o-document')
+                    ->action(function (AccompagnementType $record) {
+                        $pdfPath = $record->generatePdf();
+                        return response()->download($pdfPath);
+                    }),
+                IconColumn::make('attachment_scheduler')
+                    ->label('Attachment Calendrier')
                     ->trueIcon('heroicon-o-document')
                     ->action(function (AccompagnementType $record) {
                         $pdfPath = $record->generatePdf();

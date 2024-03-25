@@ -10,7 +10,8 @@
                             data-bs-target="#videoModal">
                             <span></span>
                         </button> --}}
-                        <iframe width="560" height="315" src="https://player.vimeo.com/video/{{ $accompagnement->video }}"> 
+                        <iframe width="560" height="315"
+                            src="https://player.vimeo.com/video/{{ $accompagnement->video }}">
                         </iframe>
                     </div>
                 </div>
@@ -20,48 +21,87 @@
                         </h1>
 
                         <p>
-                           
-                            {!! str($accompagnement->description)->markdown() !!} 
+
+                            {!! str($accompagnement->description)->markdown() !!}
                         </p>
-                        <div class="row g-5 pt-2 mb-5 download">
-                            <div class="col-sm-6">
-                                <a href="{{ asset('storage/' . $accompagnement->attachment_roi) }}" download="">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-file-text" width="76" height="76"
-                                        viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                        <path
-                                            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
-                                        </path>
-                                        <line x1="9" y1="9" x2="10" y2="9"></line>
-                                        <line x1="9" y1="13" x2="15" y2="13"></line>
-                                        <line x1="9" y1="17" x2="15" y2="17"></line>
-                                    </svg>
-                                </a>
-                                <h5 class="mb-3">{{ $accompagnement->name_type_1 }}</h5>
-                                <span>{{ $accompagnement->description_roi }}</span>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="{{ asset('storage/' . $accompagnement->attachment_convention) }}"
-                                    download="">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-file-text" width="76" height="76"
-                                        viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                        <path
-                                            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
-                                        </path>
-                                        <line x1="9" y1="9" x2="10" y2="9"></line>
-                                        <line x1="9" y1="13" x2="15" y2="13"></line>
-                                        <line x1="9" y1="17" x2="15" y2="17"></line>
-                                    </svg>
-                                </a>
-                                <h5 class="mb-3">{{ $accompagnement->name_type_2 }}</h5>
-                                <span>{{ $accompagnement->description_convention }}</span>
+                        <div class="container text-center">
+                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+                                @if ($accompagnement->attachment_roi)
+                                    <div class="col">
+                                        <a href="{{ asset('storage/' . $accompagnement->attachment_roi) }}"
+                                            download="">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-file-text" width="76"
+                                                height="76" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                <path
+                                                    d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                                                </path>
+                                                <line x1="9" y1="9" x2="10" y2="9">
+                                                </line>
+                                                <line x1="9" y1="13" x2="15" y2="13">
+                                                </line>
+                                                <line x1="9" y1="17" x2="15" y2="17">
+                                                </line>
+                                            </svg>
+                                            <h5 class="mb-3">{{ $accompagnement->name_type_1 }}</h5>
+                                        </a>
+
+                                        <span>{{ $accompagnement->description_roi }}</span>
+                                    </div>
+                                @endif
+                                @if ($accompagnement->attachment_scheduler)
+                                    <div class="col">
+                                        <a href="{{ asset('storage/' . $accompagnement->attachment_scheduler) }}"
+                                            download="">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-file-text" width="76"
+                                                height="76" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                <path
+                                                    d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                                                </path>
+                                                <line x1="9" y1="9" x2="10" y2="9">
+                                                </line>
+                                                <line x1="9" y1="13" x2="15" y2="13">
+                                                </line>
+                                                <line x1="9" y1="17" x2="15" y2="17">
+                                                </line>
+                                            </svg>
+                                        </a>
+                                        <h5 class="mb-3">{{ $accompagnement->name_type_3 }}</h5>
+                                    </div>
+                                @endif
+                                @if ($accompagnement->attachment_convention)
+                                    <div class="col">
+                                        <a href="{{ asset('storage/' . $accompagnement->attachment_convention) }}"
+                                            download="">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-file-text" width="76"
+                                                height="76" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                <path
+                                                    d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                                                </path>
+                                                <line x1="9" y1="9" x2="10" y2="9">
+                                                </line>
+                                                <line x1="9" y1="13" x2="15" y2="13">
+                                                </line>
+                                                <line x1="9" y1="17" x2="15" y2="17">
+                                                </line>
+                                            </svg>
+                                        </a>
+                                        <h5 class="mb-3">{{ $accompagnement->name_type_2 }}</h5>
+                                        <span>{{ $accompagnement->description_convention }}</span>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

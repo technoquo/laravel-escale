@@ -36,7 +36,7 @@ class NumberTransportResource extends Resource
             ->schema([
                 Section::make([
                     TextInput::make('number')->required(),
-                    ColorPicker::make('color')->required(),                    
+                    ColorPicker::make('color')->nullable(),                    
                     Select::make('transport_id')
                         ->relationship('transports', 'transport')
                         ->required()

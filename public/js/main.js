@@ -155,7 +155,7 @@ function showVideo(e) {
         $("#tooltip").html(
             '<img with="100" height="100" src="' +
                 window.location.origin +
-                '/images/tooltip/accompagnement.gif">'
+                '/images/tooltip/accomp.gif">'
         );
     } else if (e.hasClass("photos")) {
         $("#tooltip").html(

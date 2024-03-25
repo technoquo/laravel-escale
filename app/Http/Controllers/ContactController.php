@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Location;
 use App\Models\NumberTransport;
+use App\Models\Transport;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,10 +15,13 @@ class ContactController extends Controller
 
         $contact = Contact::first();
         $location = Location::first();
-        $buses = NumberTransport::where('transport_id', 1)->get();
-        
-        $trams = NumberTransport::where('transport_id', 2)->get();
+        $transports = Transport::all();
+        foreach ($transports as $transport) {
+            $transport->numbers = NumberTransport::where('transport_id', $transport->id)->get();
+        }
+       
+       
 
-        return view('contact', ['contact' => $contact, 'latitude' => $location->latitude, 'longitude' => $location->longitude,'buses' => $buses, 'trams' => $trams]);
+        return view('contact', ['contact' => $contact, 'latitude' => $location->latitude, 'longitude' => $location->longitude,'transports' => $transports]);
     }
 }
