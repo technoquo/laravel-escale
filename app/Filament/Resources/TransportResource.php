@@ -28,6 +28,8 @@ class TransportResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('transport')
+                    ->required(),
+                Forms\Components\TextInput::make('ico')
                     ->required()
                     
             ]);
