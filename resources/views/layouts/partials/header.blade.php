@@ -22,7 +22,7 @@
 
                 <div class="ms-auto d-flex align-items-center">
                     <small class="ms-4"><i class="fa fa-map-marker-alt me-3"></i>{{ $contact->bureau }}</small>
-                    <small class="ms-4"><i class="fa fa-phone-alt me-3">{{ $contact->tel }}</i>
+                    <small class="ms-4"><i class="fa fa-phone-alt me-3"></i>{{ $contact->tel }}
                     </small>
                     <small class="ms-4"><i class="fab fa-whatsapp me-3"></i> <a
                             href="https://api.whatsapp.com/send?phone=472172609" target="_blank"
