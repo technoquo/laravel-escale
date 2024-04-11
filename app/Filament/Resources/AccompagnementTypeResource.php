@@ -131,8 +131,7 @@ class AccompagnementTypeResource extends Resource
                                 ->acceptedFileTypes(['application/pdf']),
                             TextInput::make('name_type_3')
                                 ->label('Type 3'),
-                             FileUpload::make('attachment_scheduler')
-                                ->required()
+                             FileUpload::make('attachment_scheduler')                               
                                 ->disk('public')
                                 ->directory('pdf')
                                 ->acceptedFileTypes(['application/pdf']),
