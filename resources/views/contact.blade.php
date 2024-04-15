@@ -28,7 +28,7 @@
                                     </div>
                                 @else
                                     <!-- Handle case where color is not defined -->
-                                    <div class="rounded-circle py-1 px-2 me-1 text-center fw-bold">
+                                    <div class="rounded-circle py-1 px-2 me-1 text-center">
                                         {{ $number->number }}
                                     </div>
                                 @endif
