@@ -8,13 +8,13 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Nos bureaux</h4>
-                    <p class="mb-2">
-                        <i class="fa fa-map-marker-alt me-3" id="line-map"></i>{{ $contact->bureau }}
+                    <p class="d-flex justify-content-center" style="width:220px">
+                        <i class="fa fa-map-marker-alt me-3" id="line-map"></i>{{ $contact->bureau }}</>
                     </p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $contact->tel }}</p>
                     <p class="mb-2">
                         <i class="fab fa-whatsapp me-3"></i> <a href="https://api.whatsapp.com/send?phone=472172609"
-                            target="_blank" class="text-white">{{ $contact->gsm }}</a>
+                            target="_blank"  style="color:#A7ADA6">{{ $contact->gsm }}</a>
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -24,7 +24,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Horaire</h4>
                     <p class="mb-1">Lundi - Vendredi</p>
-                    <h6 class="text-light">{{ $contact->horaire }}</h6>
+                    <div>{{ $contact->horaire }}</div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-4">Don</h4>

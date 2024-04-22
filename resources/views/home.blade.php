@@ -105,7 +105,9 @@
                 @foreach ($sponsors as $sponsor) 
                 <div class="project-item mb-5">
                     <div class="position-relative">
-                        <img class="img-fluid" width="50" height="50" src="{{ asset('storage/' . $sponsor->image) }}" alt="">                        
+                        <a href="{{ $sponsor->url }}" target="_blank">
+                         <img class="img-fluid" width="50" height="50" src="{{ asset('storage/' . $sponsor->image) }}" alt="{{ $sponsor->alt }}"> 
+                        </a>                       
                     </div>                   
                 </div>
                 @endforeach

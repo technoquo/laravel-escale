@@ -48,10 +48,10 @@ class SponsorResource extends Resource
                                     ->image()
                                     ->imageEditor(),
                                 TextInput::make('alt')
-                                    ->label('Lien')
+                                    ->label('Alt')
                                     ->required(),
                                 TextInput::make('url')
-                                    ->label('Texte alternatif')
+                                    ->label('Lien')
                                     ->required(),
                             ]),
                         Section::make('Status')
