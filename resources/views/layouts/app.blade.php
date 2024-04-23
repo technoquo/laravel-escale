@@ -5,15 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="L'ESCALE">
-    <meta property="og:description" content="Your Page Description">
-    <meta property="og:url" content="https://www.escaleasbl.be">
-    <meta property="og:image" content="images/logo-escale.png">
-    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <meta property="og:description" content="{{ $ogDescription ?? 'Escale escale' }}">
+    <meta property="og:url" content="{{ $ogUrl ?? config('app.url') }}">
+    <meta property="og:image" content="{{ $ogImage ?? config('app.url').'/images/logo-escale.png' }}">
+    <meta name="keywords" content="{{ $keywords ?? 'keyword1, keyword2' }}">
     <meta property="og:type" content="website">
     <!-- Favicon -->
-    <link rel="icon" href="https://escaleasbl.be/wp-content/uploads/escale_icon.png" sizes="32x32" />
+    <link rel="icon" href="{{ config('app.url') }}/images/escale_icon.png" sizes="32x32" />
 
 
+   
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
