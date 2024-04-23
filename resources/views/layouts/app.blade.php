@@ -11,7 +11,7 @@
     <meta name="keywords" content="{{ $keywords ?? 'keyword1, keyword2' }}">
     <meta property="og:type" content="website">
     <!-- Favicon -->
-    <link rel="icon" href="{{ config('app.url') }}/images/escale_icon.png" sizes="32x32" />
+    <link rel="icon" href="{{ config('app.url') }}/images/favicon.ico" sizes="32x32" />
 
 
    
