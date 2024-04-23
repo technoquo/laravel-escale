@@ -8,7 +8,7 @@
     <meta property="og:description" content="Your Page Description">
     <meta property="og:url" content="https://www.escaleasbl.be">
     <meta property="og:image" content="{{ config('app.url') }}/images/escale.png">
-    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <meta name="keywords" content="keyword1, keyword2, keyword32">
     <meta property="og:type" content="website">
     <!-- Favicon -->
     <link rel="icon" href="https://escaleasbl.be/wp-content/uploads/escale_icon.png" sizes="32x32" />
