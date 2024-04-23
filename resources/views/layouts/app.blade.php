@@ -7,7 +7,7 @@
     <meta property="og:title" content="L'ESCALE">
     <meta property="og:description" content="Your Page Description">
     <meta property="og:url" content="https://www.escaleasbl.be">
-    <meta property="og:image" content="{{ config('app.url') }}/images/logo-escale.png">
+    <meta property="og:image" content="{{ config('app.url') }}/images/escale.png">
     <meta name="keywords" content="keyword1, keyword2, keyword3">
     <meta property="og:type" content="website">
     <!-- Favicon -->
