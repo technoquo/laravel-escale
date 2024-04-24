@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="{{ $attributes['title']  }}">
     <meta property="og:description" content="Service d\' accompagnement pour personnes sourdes ou malentendantes habitant en Région Bruxelloise et ses alentours">
