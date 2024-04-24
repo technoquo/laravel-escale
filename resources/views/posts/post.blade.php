@@ -1,4 +1,4 @@
-<x-app-layout :title="$post->title">
+<x-app-layout :title="$post->title" :description="$post->description" :slug="$post->slug">
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">

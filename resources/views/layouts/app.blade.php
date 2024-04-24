@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="L'ESCALE">
-    <meta property="og:description" content="Your Page Description">
-    <meta property="og:url" content="https://www.escaleasbl.be">
+    <meta property="og:title" content="{{ $attributes['title']  }}">
+    <meta property="og:description" content="Service d\' accompagnement pour personnes sourdes ou malentendantes habitant en Région Bruxelloise et ses alentours">
+    <meta property="og:url" content="{{ config('app.url') .'/'. $attributes['slug'] ?? 'https://www.escaleasbl.be' }}">
     <meta property="og:image" content="{{ config('app.url') }}/images/escale.png">
-    <meta name="keywords" content="keyword1, keyword2, keyword32">
+    <meta name="keywords" content="service, accompagnement, personnes sourdes ou malentendantes, autonomie, langue des signes, bruxelles, social, soutien, parentalité">
     <meta property="og:type" content="website">
     <!-- Favicon -->
     <link rel="icon" href="https://escaleasbl.be/wp-content/uploads/escale_icon.png" sizes="32x32" />
@@ -40,7 +41,15 @@
     <title>
         {{ $attributes['title'] . '- L\' Escale ASBL' ?? ' L\' Escale ASBL - Service d\' accompagnement pour personnes sourdes ou malentendantes' }}
     </title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5EHHZHTFP8"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-5EHHZHTFP8');
+    </script>
 
 
 </head>

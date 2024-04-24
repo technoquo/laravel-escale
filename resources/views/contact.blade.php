@@ -81,7 +81,7 @@
                         </div>
                         <div class="ms-3">
                             <h6>Envoyez-nous un e-mail</h6>
-                            <span>direction@escaleasbl.be</span>
+                            <span><a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></span>
                         </div>
                     </div>
                     <iframe
