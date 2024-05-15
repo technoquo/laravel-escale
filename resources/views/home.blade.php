@@ -5,8 +5,7 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $key => $slider)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <img src="{{ asset('storage/' . $slider->image) }}" title="{{ $slider->title }}"
-                            alt="{{ $slider->title }}" />
+                        <img src="/storage/{{ $slider->image }}" title="{{ $slider->title }}" alt="{{ $slider->title }}" />
                         <div class="carousel-caption">
                             <div class="container">
                                 <div class="row justify-content-start">
@@ -43,16 +42,15 @@
             </div>
 
             <div class="row g-4">
-               
+
                 @forelse ($posts as $post)
-             
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="nouvelle-item position-relative">
                             <a class="text-primary fw-medium" href="{{ route('post.index', $post->slug) }}">
                                 <div class="service-text rounded p-5">
                                     @if ($post->image)
                                         <div class="mx-auto mb-4 photo">
-                                            <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}"
+                                            <img class="img-fluid" src="/storage/{{ $post->image }}"
                                                 title="{{ $post->title }}" alt="{{ $post->title }}">
                                         </div>
                                     @elseif ($post->youtube)
@@ -69,7 +67,7 @@
                                         </p>
                                 </div>
                                 <div class="service-btn rounded-0 rounded-bottom">
-                                    {{ date("d-m-Y", strtotime($post->date_published))}} - En savoir plus<i
+                                    {{ date('d-m-Y', strtotime($post->date_published)) }} - En savoir plus<i
                                         class="bi bi-chevron-double-right ms-2"></i>
                                 </div>
                             </a>
@@ -102,18 +100,19 @@
                 {{-- <h1 class="display-5 mb-5">We've Done Lot's of Awesome Projects</h1> --}}
             </div>
             <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-                @foreach ($sponsors as $sponsor) 
-                <div class="project-item mb-5">
-                    <div class="position-relative">
-                        <a href="{{ $sponsor->url }}" target="_blank">
-                         <img class="img-fluid" width="50" height="50" src="{{ asset('storage/' . $sponsor->image) }}" alt="{{ $sponsor->alt }}"> 
-                        </a>                       
-                    </div>                   
-                </div>
+                @foreach ($sponsors as $sponsor)
+                    <div class="project-item mb-5">
+                        <div class="position-relative">
+                            <a href="{{ $sponsor->url }}" target="_blank">
+                                <img class="img-fluid" width="50" height="50"
+                                    src="/storage/{{ $sponsor->image }}" alt="{{ $sponsor->alt }}">
+                            </a>
+                        </div>
+                    </div>
                 @endforeach
-               
-              
-                
+
+
+
             </div>
         </div>
     </div>
