@@ -5,7 +5,8 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $key => $slider)
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <img src="/storage/{{ $slider->image }}" title="{{ $slider->title }}" alt="{{ $slider->title }}" />
+                        <img src="{{ asset("storage/$slider->image") }}" title="{{ $slider->title }}"
+                            alt="{{ $slider->title }}" />
                         <div class="carousel-caption">
                             <div class="container">
                                 <div class="row justify-content-start">
@@ -50,7 +51,7 @@
                                 <div class="service-text rounded p-5">
                                     @if ($post->image)
                                         <div class="mx-auto mb-4 photo">
-                                            <img class="img-fluid" src="/storage/{{ $post->image }}"
+                                            <img class="img-fluid" src="{{ asset("storage/$post->image") }}"
                                                 title="{{ $post->title }}" alt="{{ $post->title }}">
                                         </div>
                                     @elseif ($post->youtube)
@@ -105,7 +106,7 @@
                         <div class="position-relative">
                             <a href="{{ $sponsor->url }}" target="_blank">
                                 <img class="img-fluid" width="50" height="50"
-                                    src="/storage/{{ $sponsor->image }}" alt="{{ $sponsor->alt }}">
+                                    src='{{ asset("storage/$sponsor->image") }}' alt="{{ $sponsor->alt }}">
                             </a>
                         </div>
                     </div>
