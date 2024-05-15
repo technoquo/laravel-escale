@@ -4,13 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="{{ $attributes['title']  }}">
-    <meta property="og:description" content="Service d\' accompagnement pour personnes sourdes ou malentendantes habitant en Région Bruxelloise et ses alentours">
-    <meta property="og:url" content="{{ config('app.url') .'/'. $attributes['slug'] ?? 'https://www.escaleasbl.be' }}">
+    <meta property="og:title" content="{{ $attributes['title'] }}">
+    <meta property="og:description"
+        content="Service d\' accompagnement pour personnes sourdes ou malentendantes habitant en Région Bruxelloise et ses alentours">
+    <meta property="og:url" content="{{ config('app.url') . '/' . $attributes['slug'] ?? 'https://www.escaleasbl.be' }}">
     <meta property="og:image" content="{{ config('app.url') }}/images/escale.png">
-    <meta name="keywords" content="service, accompagnement, personnes sourdes ou malentendantes, autonomie, langue des signes, bruxelles, social, soutien, parentalité">
+    <meta name="keywords"
+        content="service, accompagnement, personnes sourdes ou malentendantes, autonomie, langue des signes, bruxelles, social, soutien, parentalité">
     <meta property="og:type" content="website">
     <!-- Favicon -->
     <link rel="icon" href="https://escaleasbl.be/wp-content/uploads/escale_icon.png" sizes="32x32" />
@@ -45,11 +46,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5EHHZHTFP8"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'G-5EHHZHTFP8');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5EHHZHTFP8');
     </script>
 
 
@@ -81,7 +85,7 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}?v={{ time() }}"></script>
-    
+
     @yield('scripts')
 </body>
 
