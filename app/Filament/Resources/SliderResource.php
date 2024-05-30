@@ -8,6 +8,7 @@ use App\Models\Slider;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Illuminate\Support\HtmlString;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Section;
@@ -17,9 +18,11 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Placeholder;
 use Filament\Tables\Filters\TernaryFilter;
 use App\Filament\Resources\SliderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
 use App\Filament\Resources\SliderResource\RelationManagers;
 
 class SliderResource extends Resource
@@ -58,11 +61,13 @@ class SliderResource extends Resource
                             ]),
                         Section::make('Slider')
                             ->schema([
-                                FileUpload::make('image')
-                                    ->directory('form-attachments')
-                                    ->preserveFilenames()
-                                    ->image()
-                                    ->imageEditor()
+                                CloudinaryFileUpload::make('image')
+                                    ->label('Cloudinary Slider')
+                                    ->required(),
+                                Placeholder::make('Preview')
+                                    ->content(fn ($record) => new HtmlString('<img src="' . ($record->image ?? '') . '" style="max-width: 200px; max-height: 200px;">'))
+                                    ->label('Image Preview')
+                                    ->visible(fn ($record) => $record && $record->image),
                             ])->collapsible(),
 
                     ])
