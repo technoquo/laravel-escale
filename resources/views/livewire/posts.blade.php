@@ -5,7 +5,7 @@
                 <div class="row g-0">
                     <div class="col-md-4">
                         @if ($post->image)
-                            <img class="img-fluid" src="{{ asset('storage/' . $post->image) }}" title="{{ $post->title }}"
+                            <img class="img-fluid" src="{{ $post->image }}" title="{{ $post->title }}"
                                 alt="{{ $post->title }}">
                         @elseif ($post->youtube)
                             <img class="img-fluid" src="https://img.youtube.com/vi/{{ $post->youtube }}/mqdefault.jpg"

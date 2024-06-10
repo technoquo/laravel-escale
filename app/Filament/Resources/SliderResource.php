@@ -43,6 +43,7 @@ class SliderResource extends Resource
                     ->schema([
                         Section::make([
                             TextInput::make('title')
+                                ->label('Titre')
                                 ->required(),
                             TextInput::make('description')
                                 ->required(),
@@ -63,10 +64,22 @@ class SliderResource extends Resource
                             ->schema([
                                 CloudinaryFileUpload::make('image')
                                     ->label('Cloudinary Slider')
-                                    ->required(),
+                                    ->preserveFilenames()
+                                    ->image()
+                                    ->default(fn ($record) => $record ? $record->image : null)
+                                    ->visible(fn ($record) => !$record || !$record->image),
                                 Placeholder::make('Preview')
-                                    ->content(fn ($record) => new HtmlString('<img src="' . ($record->image ?? '') . '" style="max-width: 200px; max-height: 200px;">'))
-                                    ->label('Image Preview')
+                                    ->content(function ($record) {
+                                        return $record && $record->image
+                                            ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                                            : '';
+                                    })
+                                    ->label('Aperçu de l\' image')
+                                    ->visible(fn ($record) => $record && $record->image),
+                                CloudinaryFileUpload::make('image')
+                                    ->label('Charger une nouvelle image')
+                                    ->preserveFilenames()
+                                    ->image()
                                     ->visible(fn ($record) => $record && $record->image),
                             ])->collapsible(),
 
