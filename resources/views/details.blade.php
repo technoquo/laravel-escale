@@ -16,10 +16,9 @@
             <ul class="galeria-imagenes list-unstyled mx-auto d-flex flex-wrap" style="width: 100%">
                 @foreach ($galleries as $gallery)
                     <li class="col-md-2 mb-4">
-                        <a data-lightbox="galeria" data-title="{{ $gallery->alt }}"
-                            href="{{ asset('storage/' . $gallery->image) }}">
-                            <img class="rounded mx-auto d-block img-fluid"
-                                src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->alt }}">
+                        <a data-lightbox="galeria" data-title="{{ $gallery->alt }}" href="{{ $gallery->image }}">
+                            <img class="rounded mx-auto d-block img-fluid" src="{{ $gallery->image }}"
+                                alt="{{ $gallery->alt }}">
                         </a>
                     </li>
                 @endforeach

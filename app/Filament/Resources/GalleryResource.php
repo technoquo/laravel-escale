@@ -21,6 +21,9 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\GalleryResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\GalleryResource\RelationManagers;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class GalleryResource extends Resource
 {
@@ -59,11 +62,25 @@ class GalleryResource extends Resource
                             ]),
                         Section::make('Images')
                             ->schema([
-                                FileUpload::make('image')
-                                    ->directory('form-attachments')
+                                CloudinaryFileUpload::make('image')
+                                    ->label('Cloudinary Slider')
                                     ->preserveFilenames()
                                     ->image()
-                                    ->imageEditor(),
+                                    ->default(fn ($record) => $record ? $record->image : null)
+                                    ->visible(fn ($record) => !$record || !$record->image),
+                                Placeholder::make('Preview')
+                                    ->content(function ($record) {
+                                        return $record && $record->image
+                                            ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                                            : '';
+                                    })
+                                    ->label('Aperçu de l\' image')
+                                    ->visible(fn ($record) => $record && $record->image),
+                                CloudinaryFileUpload::make('image')
+                                    ->label('Charger une nouvelle image')
+                                    ->preserveFilenames()
+                                    ->image()
+                                    ->visible(fn ($record) => $record && $record->image),
                                 Select::make('year_id')
                                     ->label('année')
                                     ->relationship('years', 'title')

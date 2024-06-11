@@ -22,6 +22,10 @@ use Filament\Forms\Components\MarkdownEditor;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\AccompagnementTypeResource\Pages;
 use App\Filament\Resources\AccompagnementTypeResource\RelationManagers;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
+
 
 class AccompagnementTypeResource extends Resource
 {
@@ -75,12 +79,26 @@ class AccompagnementTypeResource extends Resource
                     ->schema([
                         Section::make([
                             TextInput::make('video')
-                                ->label('Vimeo')
-                                ->required(),
-                            FileUpload::make('image')
-                                ->required()
-                                ->disk('public')
-                                ->directory('thumbnail'),
+                                ->label('Vimeo'),
+                            CloudinaryFileUpload::make('image')
+                                ->label('Cloudinary Slider')
+                                ->preserveFilenames()
+                                ->image()
+                                ->default(fn ($record) => $record ? $record->image : null)
+                                ->visible(fn ($record) => !$record || !$record->image),
+                            Placeholder::make('Preview')
+                                ->content(function ($record) {
+                                    return $record && $record->image
+                                        ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                                        : '';
+                                })
+                                ->label('Aperçu de l\' image')
+                                ->visible(fn ($record) => $record && $record->image),
+                            CloudinaryFileUpload::make('image')
+                                ->label('Charger une nouvelle image')
+                                ->preserveFilenames()
+                                ->image()
+                                ->visible(fn ($record) => $record && $record->image),
                             TextInput::make('name_type_1')
                                 ->label('Type 1'),
                             MarkdownEditor::make('description_roi')
@@ -131,7 +149,7 @@ class AccompagnementTypeResource extends Resource
                                 ->acceptedFileTypes(['application/pdf']),
                             TextInput::make('name_type_3')
                                 ->label('Type 3'),
-                             FileUpload::make('attachment_scheduler')                               
+                            FileUpload::make('attachment_scheduler')
                                 ->disk('public')
                                 ->directory('pdf')
                                 ->acceptedFileTypes(['application/pdf']),

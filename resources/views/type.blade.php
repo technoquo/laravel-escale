@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- About Start -->
-    <div class="container-xxl about my-5" style="background-image: url({{ asset('storage/' . $accompagnement->image) }})">
+    <div class="container-xxl about my-5" style="background-image: url({{ $accompagnement->image }})">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-6">

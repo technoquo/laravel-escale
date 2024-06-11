@@ -49,20 +49,15 @@ class SponsorResource extends Resource
                                     ->label('Cloudinary Slider')
                                     ->preserveFilenames()
                                     ->image()
-                                    ->default(fn ($record) => $record ? $record->image : null)
-                                    ->visible(fn ($record) => !$record || !$record->image),
+                                    ->default(fn ($record) => $record ? $record->image : null),
+
                                 Placeholder::make('Preview')
                                     ->content(function ($record) {
                                         return $record && $record->image
                                             ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
                                             : '';
                                     })
-                                    ->label('Aperçu de l\' image')
-                                    ->visible(fn ($record) => $record && $record->image),
-                                CloudinaryFileUpload::make('image')
-                                    ->label('Charger une nouvelle image')
-                                    ->preserveFilenames()
-                                    ->image()
+                                    ->label('Image Preview')
                                     ->visible(fn ($record) => $record && $record->image),
                                 TextInput::make('alt')
                                     ->label('Alt')
