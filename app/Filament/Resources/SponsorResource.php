@@ -46,7 +46,7 @@ class SponsorResource extends Resource
                         Section::make('Soutien')
                             ->schema([
                                 CloudinaryFileUpload::make('image')
-                                    ->label('Cloudinary Slider')
+                                    ->label('Image Soutien')
                                     ->preserveFilenames()
                                     ->image()
                                     ->default(fn ($record) => $record ? $record->image : null),
@@ -57,7 +57,7 @@ class SponsorResource extends Resource
                                             ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
                                             : '';
                                     })
-                                    ->label('Image Preview')
+                                    ->label('Aperçu de l\'image')
                                     ->visible(fn ($record) => $record && $record->image),
                                 TextInput::make('alt')
                                     ->label('Alt')

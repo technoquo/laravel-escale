@@ -45,7 +45,7 @@ class DocumentResource extends Resource
                     ->offColor('danger')
                     ->default(true),
                 CloudinaryFileUpload::make('attachment')
-                    ->label('Cloudinary PDF')
+                    ->label('Joindre le fichier PDF')
                     ->preserveFilenames()
                     ->acceptedFileTypes(['application/pdf'])
 

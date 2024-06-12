@@ -35,13 +35,13 @@ class DownloadController extends Controller
         $record = $modelClass::findOrFail($id);
 
         if ($record->attachment) {
-            $record->attachment_roi;
+            $fileUrl = $record->attachment;
         } elseif ($record->attachment_roi) {
             $fileUrl = $record->attachment_roi;
         } elseif ($record->attachment_convention) {
-            $record->attachment_convention;
+            $fileUrl = $record->attachment_convention;
         } elseif ($record->attachment_scheduler) {
-            $record->attachment_scheduler;
+            $fileUrl = $record->attachment_scheduler;
         }
 
 
