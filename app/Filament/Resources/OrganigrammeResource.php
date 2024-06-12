@@ -17,6 +17,7 @@ use App\Filament\Resources\OrganigrammeResource\Pages;
 use App\Filament\Resources\OrganigrammeResource\RelationManagers;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
 
 class OrganigrammeResource extends Resource
 {
@@ -35,11 +36,10 @@ class OrganigrammeResource extends Resource
                 Section::make([
                     TextInput::make('title')
                         ->label('titre'),
-                    FileUpload::make('attachment')
-                        ->required()
-                        ->disk('public')
-                        ->directory('pdf')
-                        ->acceptedFileTypes(['application/pdf']),
+                    CloudinaryFileUpload::make('attachment')
+                        ->label('Cloudinary PDF')
+                        ->preserveFilenames()
+                        ->acceptedFileTypes(['application/pdf'])
                 ])
             ]);
     }
@@ -51,11 +51,8 @@ class OrganigrammeResource extends Resource
                 TextColumn::make('title'),
                 IconColumn::make('attachment')
                     ->label('Attachment')
-                    ->trueIcon('heroicon-o-document')
-                    ->action(function (Organigramme $record) {
-                        $pdfPath = $record->generatePdf();
-                        return response()->download($pdfPath);
-                    }),
+                    ->url(fn (Organigramme $record) => route('download.file',  ['model' => 'organigramme', 'id' => $record->id]))
+                    ->trueIcon('heroicon-o-document'),
             ])
             ->filters([
                 //

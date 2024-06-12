@@ -9,6 +9,7 @@ use App\Http\Controllers\AccompagnementController;
 use App\Http\Controllers\AccompagnementTypeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HistoriqueController;
 use App\Http\Controllers\OrganigrammeController;
 use App\Http\Controllers\TeamController;
@@ -38,3 +39,4 @@ Route::get('/historique', [HistoriqueController::class, 'index'])->name('histori
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/actualites', Posts::class)->name('actualites');
 Route::get('/{slug}', [PostController::class, 'index'])->name('post.index');
+Route::get('/download/{model}/{id}/{attachment}', [DownloadController::class, 'download'])->name('download.file');

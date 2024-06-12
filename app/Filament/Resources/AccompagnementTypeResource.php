@@ -118,10 +118,9 @@ class AccompagnementTypeResource extends Resource
                                     'table',
                                     'undo',
                                 ]),
-                            FileUpload::make('attachment_roi')
-                                ->required()
-                                ->disk('public')
-                                ->directory('pdf')
+                            CloudinaryFileUpload::make('attachment_roi')
+                                ->label('Attachment Roi')
+                                ->preserveFilenames()
                                 ->acceptedFileTypes(['application/pdf']),
                             TextInput::make('name_type_2')
                                 ->label('Type 2'),
@@ -142,16 +141,15 @@ class AccompagnementTypeResource extends Resource
                                     'table',
                                     'undo',
                                 ]),
-                            FileUpload::make('attachment_convention')
-                                ->required()
-                                ->disk('public')
-                                ->directory('pdf')
+                            CloudinaryFileUpload::make('attachment_convention')
+                                ->label('Attachment Convention')
+                                ->preserveFilenames()
                                 ->acceptedFileTypes(['application/pdf']),
                             TextInput::make('name_type_3')
                                 ->label('Type 3'),
-                            FileUpload::make('attachment_scheduler')
-                                ->disk('public')
-                                ->directory('pdf')
+                            CloudinaryFileUpload::make('attachment_scheduler')
+                                ->label('Attachment Scheduler')
+                                ->preserveFilenames()
                                 ->acceptedFileTypes(['application/pdf']),
 
                         ])
@@ -168,27 +166,20 @@ class AccompagnementTypeResource extends Resource
                     ->label('Titre')
                     ->searchable()
                     ->sortable(),
+
                 IconColumn::make('attachment_roi')
-                    ->label('Attachment ROI')
-                    ->trueIcon('heroicon-o-document')
-                    ->action(function (AccompagnementType $record) {
-                        $pdfPath = $record->generatePdf();
-                        return response()->download($pdfPath);
-                    }),
+                    ->label('attachment_roi')
+                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => $record->attachment_roi]))
+                    ->trueIcon('heroicon-o-document'),
+
                 IconColumn::make('attachment_scheduler')
-                    ->label('Attachment Calendrier')
-                    ->trueIcon('heroicon-o-document')
-                    ->action(function (AccompagnementType $record) {
-                        $pdfPath = $record->generatePdf();
-                        return response()->download($pdfPath);
-                    }),
+                    ->label('attachment_scheduler')
+                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => $record->attachment_scheduler]))
+                    ->trueIcon('heroicon-o-document'),
                 IconColumn::make('attachment_convention')
-                    ->label('Attachment Convention')
-                    ->trueIcon('heroicon-o-document')
-                    ->action(function (AccompagnementType $record) {
-                        $pdfPath = $record->generatePdf();
-                        return response()->download($pdfPath);
-                    }),
+                    ->label('attachment_convention')
+                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => $record->attachment_convention]))
+                    ->trueIcon('heroicon-o-document'),
                 ImageColumn::make('image')
             ])
             ->filters([

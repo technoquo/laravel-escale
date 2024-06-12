@@ -10,8 +10,7 @@
                             <p class="card-text">
                                 {{ $document->description }}
                             </p>
-                            <a href="{{ asset('storage/' . $document->attachment) }}" download
-                                class="btn btn-primary">Télécharger le
+                            <a href="{{ $document->attachment }}" target="_blank" class="btn btn-primary">Télécharger le
                                 PDF</a>
                         </div>
                     </div>

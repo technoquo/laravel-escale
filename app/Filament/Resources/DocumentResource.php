@@ -17,6 +17,9 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\DocumentResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DocumentResource\RelationManagers;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class DocumentResource extends Resource
 {
@@ -41,11 +44,10 @@ class DocumentResource extends Resource
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(true),
-                FileUpload::make('attachment')
-                    ->required()
-                    ->disk('public')
-                    ->directory('pdf')
-                    ->acceptedFileTypes(['application/pdf']),
+                CloudinaryFileUpload::make('attachment')
+                    ->label('Cloudinary PDF')
+                    ->preserveFilenames()
+                    ->acceptedFileTypes(['application/pdf'])
 
             ]);
     }
@@ -57,11 +59,15 @@ class DocumentResource extends Resource
                 TextColumn::make('title'),
                 IconColumn::make('attachment')
                     ->label('Attachment')
-                    ->trueIcon('heroicon-o-document')
-                    ->action(function (Document $record) {
-                        $pdfPath = $record->generatePdf();
-                        return response()->download($pdfPath);
-                    }),
+                    ->url(fn (Document $record) => route('download.file',  ['model' => 'document', 'id' => $record->id]))
+                    ->trueIcon('heroicon-o-document'),
+                // IconColumn::make('attachment')
+                //     ->label('Attachment')
+                //     ->trueIcon('heroicon-o-document')
+                //     ->action(function (Document $record) {
+                //         $pdfPath = $record->generatePdf();
+                //         return response()->download($pdfPath);
+                //     }),
                 IconColumn::make('status')
                     ->label('status')
                     ->toggleable()
