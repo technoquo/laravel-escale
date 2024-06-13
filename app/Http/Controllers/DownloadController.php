@@ -33,16 +33,7 @@ class DownloadController extends Controller
 
         // Find the record in the resolved model class
         $record = $modelClass::findOrFail($id);
-
-        if ($record->attachment) {
-            $fileUrl = $record->attachment;
-        } elseif ($record->attachment_roi) {
-            $fileUrl = $record->attachment_roi;
-        } elseif ($record->attachment_convention) {
-            $fileUrl = $record->attachment_convention;
-        } elseif ($record->attachment_scheduler) {
-            $fileUrl = $record->attachment_scheduler;
-        }
+        $fileUrl = $record->attachment ?? $record->attachment_roi ?? $record->attachment_convention ?? $record->attachment_scheduler;
 
 
 
@@ -65,11 +56,17 @@ class DownloadController extends Controller
         // Extract the public ID from the Cloudinary URL
         $publicId = $this->extractPublicId($fileUrl);
 
+        // Generate the direct download URL for the resource
+        // $response = $cloudinary->adminApi()->asset($publicId, ['sign_url' => true]);
+
+        // $privateDownloadUrl = $response['secure_url'];
+
         // Generate the private download URL for the resource
         $privateDownloadUrl = $cloudinary->uploadApi()->downloadArchiveUrl([
             'public_ids' => [$publicId],
             'sign_url' => true,
         ]);
+
 
 
         // Redirect the user to the private download URL

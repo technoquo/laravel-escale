@@ -29,7 +29,8 @@
 
                                 @if ($accompagnement->attachment_roi)
                                     <div class="col">
-                                        <a href="{{ $accompagnement->attachment_roi }}" target="_blank">
+                                        <a href="{{ route('download.file', ['model' => 'accompagnementype', 'id' => $accompagnement->id, 'attachment' => $accompagnement->attachment_roi]) }}"
+                                            target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="icon icon-tabler icon-tabler-file-text" width="76"
                                                 height="76" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
@@ -54,7 +55,8 @@
                                 @endif
                                 @if ($accompagnement->attachment_scheduler)
                                     <div class="col">
-                                        <a href="{{ $accompagnement->attachment_scheduler }}" target="_blank">
+                                        <a href="{{ route('download.file', ['model' => 'accompagnementype', 'id' => $accompagnement->id, 'attachment' => $accompagnement->attachment_scheduler]) }}"
+                                            target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="icon icon-tabler icon-tabler-file-text" width="76"
                                                 height="76" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
@@ -77,7 +79,8 @@
                                 @endif
                                 @if ($accompagnement->attachment_convention)
                                     <div class="col">
-                                        <a href="{{ $accompagnement->attachment_convention }}" target="_blank">
+                                        <a href="{{ route('download.file', ['model' => 'accompagnementype', 'id' => $accompagnement->id, 'attachment' => $accompagnement->attachment_convention]) }}"
+                                            target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="icon icon-tabler icon-tabler-file-text" width="76"
                                                 height="76" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
