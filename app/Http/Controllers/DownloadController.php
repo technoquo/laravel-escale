@@ -21,8 +21,9 @@ class DownloadController extends Controller
         // Add more models as needed
     ];
 
-    public function download($model, $id, $attachment = null)
+    public function download(Request $request, $model, $id)
     {
+        dd($request);
         if (!array_key_exists($model, $this->models)) {
             return Response::json(['error' => 'Model not found.'], 404);
         }
