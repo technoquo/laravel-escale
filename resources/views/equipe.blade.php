@@ -20,7 +20,7 @@
                             <div class="d-flex justify-content-center col-lg-3 col-md-6 wow fadeInUp"
                                 data-wow-delay="0.1s">
                                 <div class="team-item rounded overflow-hidden pb-4 mx-auto">
-                                    <img class="img-fluid d-block mb-4" src="{{ asset('storage/' . $employee->image) }}"
+                                    <img class="img-fluid d-block mb-4" src="{{ $employee->image }}"
                                         alt="{{ $employee->firstname . '  ' . $employee->lastname }}" />
                                     <h5>{{ $employee->firstname . '  ' . $employee->lastname }}</h5>
                                     <span class="text-primary">{{ $employee->position }}</span>

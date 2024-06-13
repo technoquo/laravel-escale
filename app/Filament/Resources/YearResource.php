@@ -21,6 +21,9 @@ use Filament\Tables\Filters\TernaryFilter;
 use App\Filament\Resources\YearResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\YearResource\RelationManagers;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class YearResource extends Resource
 {
@@ -58,12 +61,19 @@ class YearResource extends Resource
                             ]),
                         Section::make('Images')
                             ->schema([
-                                FileUpload::make('image')
-                                    ->directory('form-attachments')
+                                CloudinaryFileUpload::make('image')
+                                    ->label('Cloudinary Slider')
                                     ->preserveFilenames()
                                     ->image()
-                                    ->imageEditor()
-                                    ->required()
+                                    ->default(fn ($record) => $record ? $record->image : null),
+
+                                Placeholder::make('Preview')
+                                    ->content(function ($record) {
+                                        return $record && $record->image
+                                            ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                                            : '';
+                                    })
+                                    ->label('Image Preview')
                             ])->collapsible(),
 
                     ])
@@ -77,7 +87,7 @@ class YearResource extends Resource
                 ImageColumn::make('image'),
                 TextColumn::make('title')
                     ->label('Titre')
-                    ->sortable(),                              
+                    ->sortable(),
                 IconColumn::make('status')
                     ->toggleable()
                     ->sortable()

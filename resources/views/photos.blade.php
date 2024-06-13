@@ -13,8 +13,7 @@
                                 <div class="service-text rounded p-5">
 
                                     <div class="mx-auto mb-4 year">
-                                        <img class="img-fluid" src="{{ asset('storage/' . $year->image) }}"
-                                            alt="{{ $year->alt }}">
+                                        <img class="img-fluid" src="{{ $year->image }}" alt="{{ $year->alt }}">
                                     </div>
                                     <h5 class="mb-3">{{ $year->title }}</h4>
 

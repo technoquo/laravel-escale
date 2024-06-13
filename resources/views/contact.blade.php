@@ -8,40 +8,38 @@
             </div> --}}
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                   
+
                     <p class="mb-4">
                         {{ $contact->description_contact }}
                     </p>
                     <h3 class="mb-4">Accès par tram et bus :</h3>
-                    @foreach ($transports as  $transport)
-                    <div class="d-flex border-bottom pb-3 mb-3">
-                        <div class="flex-shrink-0 btn-square  rounded-circle">
-                            {!! $transport->ico !!}
-                        </div>
-                        <div class="ms-3">                           
-                            <div class="d-flex">
-                             
-                                @foreach ($transport->numbers as $number)
-                                @if (!empty($number->color))
-                                    <div class="rounded-circle py-1 px-2 me-1 text-white text-center" style="background-color: {{ $number->color }}">
-                                        {{ $number->number }}
-                                    </div>
-                                @else
-                                    <!-- Handle case where color is not defined -->
-                                    <div class="rounded-circle py-1 px-2 me-1 text-center">
-                                        {{ $number->number }}
-                                    </div>
-                                @endif
-                                @endforeach
+                    @foreach ($transports as $transport)
+                        <div class="d-flex border-bottom pb-3 mb-3">
+                            <div class="flex-shrink-0 btn-square  rounded-circle">
+                                {!! $transport->ico !!}
+                            </div>
+                            <div class="ms-3">
+                                <div class="d-flex">
+
+                                    @foreach ($transport->numbers as $number)
+                                        @if (!empty($number->color))
+                                            <div class="rounded-circle py-1 px-2 me-1 text-white text-center"
+                                                style="background-color: {{ $number->color }}">
+                                                {{ $number->number }}
+                                            </div>
+                                        @else
+                                            <!-- Handle case where color is not defined -->
+                                            <div class="rounded-circle py-1 px-2 me-1 text-center">
+                                                {{ $number->number }}
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    
-                        
                     @endforeach
                     <div>
-                        <img class="img-fluid" src="{{ asset('storage/' . $contact->image) }}" alt="{{ $contact->alt }}" />
+                        <img class="img-fluid" src="{{ $contact->image }}" alt="{{ $contact->alt }}" />
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -64,7 +62,7 @@
                             <span>{{ $contact->nom_contact }}</span>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex border-bottom pb-3 mb-3">
                         <div class="flex-shrink-0 btn-square bg-primary rounded-circle">
                             <i class="fa fa-mobile-alt text-white"></i>

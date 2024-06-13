@@ -20,6 +20,9 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\SponsorResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SponsorResource\RelationManagers;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class SponsorResource extends Resource
 {
@@ -42,11 +45,20 @@ class SponsorResource extends Resource
                     ->schema([
                         Section::make('Soutien')
                             ->schema([
-                                FileUpload::make('image')
-                                    ->directory('form-attachments')
+                                CloudinaryFileUpload::make('image')
+                                    ->label('Image Soutien')
                                     ->preserveFilenames()
                                     ->image()
-                                    ->imageEditor(),
+                                    ->default(fn ($record) => $record ? $record->image : null),
+
+                                Placeholder::make('Preview')
+                                    ->content(function ($record) {
+                                        return $record && $record->image
+                                            ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                                            : '';
+                                    })
+                                    ->label('Aperçu de l\'image')
+                                    ->visible(fn ($record) => $record && $record->image),
                                 TextInput::make('alt')
                                     ->label('Alt')
                                     ->required(),

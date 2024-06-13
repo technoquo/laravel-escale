@@ -23,6 +23,9 @@ use Filament\Forms\Components\MarkdownEditor;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class PostResource extends Resource
 {
@@ -42,6 +45,7 @@ class PostResource extends Resource
                     ->schema([
                         Section::make([
                             TextInput::make('title')->live()->required()->minLength(1)->maxLength(150)
+                                ->label('Titre')
                                 ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
                                     if ($operation === 'edit') {
                                         return;
@@ -50,6 +54,7 @@ class PostResource extends Resource
                                 }),
                             TextInput::make('slug')->required()->unique(ignoreRecord: true),
                             MarkdownEditor::make('description')
+                                ->label('Description')
                                 ->toolbarButtons([
                                     'attachFiles',
                                     'blockquote',
@@ -67,6 +72,7 @@ class PostResource extends Resource
                                 ])
                                 ->required(),
                             DatePicker::make('date_published')
+                                ->label('Date de publication')
                                 ->native(false)
                                 ->displayFormat('d/m/Y'),
                             Toggle::make('status')
@@ -79,9 +85,25 @@ class PostResource extends Resource
                 Group::make()
                     ->schema([
                         Section::make([
-                            FileUpload::make('image')
-                                ->disk('public')
-                                ->directory('thumbnail'),
+                            CloudinaryFileUpload::make('image')
+                                ->label('Cloudinary Slider')
+                                ->preserveFilenames()
+                                ->image()
+                                ->default(fn ($record) => $record ? $record->image : null)
+                                ->visible(fn ($record) => !$record || !$record->image),
+                            Placeholder::make('Preview')
+                                ->content(function ($record) {
+                                    return $record && $record->image
+                                        ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                                        : '';
+                                })
+                                ->label('Aperçu de l\' image')
+                                ->visible(fn ($record) => $record && $record->image),
+                            CloudinaryFileUpload::make('image')
+                                ->label('Charger une nouvelle image')
+                                ->preserveFilenames()
+                                ->image()
+                                ->visible(fn ($record) => $record && $record->image),
                             TextInput::make('alt')
                                 ->label('Alterner'),
                             TextInput::make('youtube')

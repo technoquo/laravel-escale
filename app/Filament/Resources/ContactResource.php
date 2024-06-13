@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Forms\Components\CloudinaryFileUpload;
+use Filament\Forms\Components\Placeholder;
+use Illuminate\Support\HtmlString;
 
 class ContactResource extends Resource
 {
@@ -31,7 +34,7 @@ class ContactResource extends Resource
                     ->maxLength(255),
                 Forms\Components\MarkdownEditor::make('description_contact')
                     ->maxLength(65535)
-                    ->columnSpanFull(),             
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('bureau')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('tel')
@@ -41,7 +44,7 @@ class ContactResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->email()
-                    ->maxLength(255),             
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('facebook')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('instagram')
@@ -51,9 +54,26 @@ class ContactResource extends Resource
                 Forms\Components\MarkdownEditor::make('don')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\FileUpload::make('image')
-                    ->disk('public')
-                    ->directory('thumbnail'),
+
+                CloudinaryFileUpload::make('image')
+                    ->label('Cloudinary Slider')
+                    ->preserveFilenames()
+                    ->image()
+                    ->default(fn ($record) => $record ? $record->image : null)
+                    ->visible(fn ($record) => !$record || !$record->image),
+                Placeholder::make('Preview')
+                    ->content(function ($record) {
+                        return $record && $record->image
+                            ? new HtmlString('<img src="' . $record->image . '" style="max-width: 200px; max-height: 200px;">')
+                            : '';
+                    })
+                    ->label('Aperçu de l\' image')
+                    ->visible(fn ($record) => $record && $record->image),
+                CloudinaryFileUpload::make('image')
+                    ->label('Charger une nouvelle image')
+                    ->preserveFilenames()
+                    ->image()
+                    ->visible(fn ($record) => $record && $record->image),
                 Forms\Components\TextInput::make('alt')
                     ->label('Alterner'),
             ]);
@@ -64,7 +84,7 @@ class ContactResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nom_contact')
-                    ->searchable(),              
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('tel')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('gsm')

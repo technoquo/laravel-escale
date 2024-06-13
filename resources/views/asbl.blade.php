@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- About Start -->
-    <div class="container-xxl about my-5" style="background-image: url({{ asset('storage/' . $asbl->image) }})">
+    <div class="container-xxl about my-5" style="background-image: url({{ $asbl->image }})">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-6">
@@ -11,7 +11,7 @@
                                 data-bs-target="#videoModal">
                                 <span></span>
                             </button> --}}
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $asbl->youtube }}"> 
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $asbl->youtube }}">
                             </iframe>
                         @else
                             {{-- <button type="button" class="btn-play" data-bs-toggle="modal"
@@ -19,7 +19,8 @@
                                 data-bs-target="#videoModal">
                                 <span></span>
                             </button> --}}
-                            <iframe width="560" height="315" src="https://player.vimeo.com/video/{{ $asbl->vimeo }}"> 
+                            <iframe width="560" height="315"
+                                src="https://player.vimeo.com/video/{{ $asbl->vimeo }}">
                             </iframe>
                         @endif
                     </div>
