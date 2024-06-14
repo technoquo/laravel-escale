@@ -39,4 +39,4 @@ Route::get('/historique', [HistoriqueController::class, 'index'])->name('histori
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/actualites', Posts::class)->name('actualites');
 Route::get('/{slug}', [PostController::class, 'index'])->name('post.index');
-Route::get('/download/{model}/{id}/{attachment}', [DownloadController::class, 'download'])->name('download.file');
+Route::get('/download/{model}/{attachment}/{id}', [DownloadController::class, 'download'])->name('download.file');
