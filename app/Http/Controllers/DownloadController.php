@@ -21,9 +21,8 @@ class DownloadController extends Controller
         // Add more models as needed
     ];
 
-    public function download(Request $request, $model, $id)
+    public function download($model, $attachment, $id)
     {
-        dd($request);
         if (!array_key_exists($model, $this->models)) {
             return Response::json(['error' => 'Model not found.'], 404);
         }
@@ -34,13 +33,22 @@ class DownloadController extends Controller
 
         // Find the record in the resolved model class
         $record = $modelClass::findOrFail($id);
-        $fileUrl = $record->attachment ?? $record->attachment_roi ?? $record->attachment_convention ?? $record->attachment_scheduler;
 
+        switch ($attachment) {
 
-
-
-
-
+            case 'attachment':
+                $fileUrl = $record->attachment;
+                break;
+            case 'attachment_roi':
+                $fileUrl = $record->attachment_roi;
+                break;
+            case 'attachment_convention':
+                $fileUrl = $record->attachment_convention;
+                break;
+            case 'attachment_scheduler':
+                $fileUrl = $record->attachment_scheduler;
+                break;
+        }
         if (!$fileUrl) {
             abort(404, 'File not found');
         }

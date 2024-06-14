@@ -10,8 +10,9 @@
                             <p class="card-text">
                                 {{ $document->description }}
                             </p>
-                            <a href="{{ route('download.file', ['model' => 'document', 'id' => $document->id]) }}"
-                                target="_blank" class="btn btn-primary">Télécharger le
+                            <a href="{{ route('download.file', ['model' => 'document', 'attachment' => 'attachment', 'id' => $document->id]) }}"
+                                target="_blank" class="btn btn-primary">
+                                Télécharger le
                                 PDF</a>
                         </div>
                     </div>
