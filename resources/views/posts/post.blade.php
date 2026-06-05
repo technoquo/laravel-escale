@@ -24,7 +24,7 @@
                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
                     @if ($post->image)
                         <div class="row g-3">
-                            <img src="{{ asset('storage/' . $post->image) }}" title="{{ $post->title }}"
+                            <img src="{{  $post->image }}" title="{{ $post->title }}"
                                 alt="{{ $post->title }}">
                         </div>
                     @endif
