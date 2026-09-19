@@ -77,9 +77,14 @@
                                     Mission</a>
                                 <a href="{{ route('accompagnement', 'notre-public') }}" class="dropdown-item">Notre
                                     Public</a>
-                                <a href="{{ route('type', 'accompagnement-individuel') }}"
-                                    class="dropdown-item">Accompagnement
-                                    Individuel</a>
+                                <div class="dropdown-submenu">
+                                    <a href="{{ route('type', 'accompagnement-individuel') }}"
+                                        class="dropdown-item dropdown-toggle">Accompagnement Individuel</a>
+                                    <div class="dropdown-menu bg-light rounded-0 m-0">
+                                        <a href="{{ route('type', 'roi') }}" class="dropdown-item">ROI</a>
+                                        <a href="{{ route('type', 'convention') }}" class="dropdown-item">Convention</a>
+                                    </div>
+                                </div>
                                 <a href="{{ route('type', 'accompagnement-collectif') }}"
                                     class="dropdown-item">Accompagnement
                                     Collectif</a>

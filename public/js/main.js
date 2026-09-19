@@ -19,6 +19,18 @@
         if ($(this).scrollTop() > 300) {
             $(".sticky-top").addClass("shadow-sm").css("top", "0px");
         } else {
+            if (!$('#navbarCollapse').hasClass('show')) {
+                $(".sticky-top").removeClass("shadow-sm").css("top", "-100px");
+            }
+        }
+    });
+
+    // Keep navbar visible while mobile menu is open
+    $('#navbarCollapse').on('show.bs.collapse', function () {
+        $(".sticky-top").css("top", "0px");
+    });
+    $('#navbarCollapse').on('hidden.bs.collapse', function () {
+        if ($(window).scrollTop() <= 300) {
             $(".sticky-top").removeClass("shadow-sm").css("top", "-100px");
         }
     });
@@ -118,6 +130,25 @@
         window.open(googleMapsUrl, "_blank");
     });
 })(jQuery);
+
+// Nested submenu toggle — desktop y móvil
+// Binding directo (no delegado) para que stopPropagation corte antes de que Bootstrap procese el click
+$(function () {
+    $('.dropdown-submenu > .dropdown-toggle').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $sub = $(this).next('.dropdown-menu');
+        $('.dropdown-submenu .dropdown-menu').not($sub).removeClass('show');
+        $sub.toggleClass('show');
+    });
+});
+
+// Cerrar submenu al hacer click fuera
+$(document).on('click', function (e) {
+    if (!$(e.target).closest('.dropdown-submenu').length) {
+        $('.dropdown-submenu .dropdown-menu').removeClass('show');
+    }
+});
 
 let mouseX;
 let mouseY;

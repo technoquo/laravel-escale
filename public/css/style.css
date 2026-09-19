@@ -712,7 +712,8 @@ body{
 }
 
 @media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
+    /* Solo el dropdown-menu directo del nav-item, no el anidado */
+    .navbar .nav-item > .dropdown-menu {
         display: block;
         border: none;
         margin-top: 0;
@@ -722,11 +723,43 @@ body{
         transition: .5s;
     }
 
-    .navbar .nav-item:hover .dropdown-menu {
+    .navbar .nav-item:hover > .dropdown-menu {
         top: 100%;
         visibility: visible;
         transition: .5s;
         opacity: 1;
+    }
+
+    /* Nested submenu — aparece a la derecha al hacer click */
+    .navbar .dropdown-submenu {
+        position: relative;
+    }
+
+    .navbar .dropdown-submenu > .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        margin-top: 0;
+        min-width: 160px;
+    }
+
+    .navbar .dropdown-submenu > .dropdown-menu.show {
+        display: block;
+    }
+}
+
+/* Nested submenu — móvil (colapso vertical) */
+@media (max-width: 991.98px) {
+    .dropdown-submenu > .dropdown-menu {
+        display: none;
+        position: static;
+        padding-left: 1rem;
+        box-shadow: none;
+    }
+
+    .dropdown-submenu > .dropdown-menu.show {
+        display: block;
     }
 }
 
