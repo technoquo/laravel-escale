@@ -4,6 +4,8 @@ use App\Livewire\Posts;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoiController;
+use App\Http\Controllers\ConventionController;
 
 use App\Http\Controllers\AccompagnementController;
 use App\Http\Controllers\AccompagnementTypeController;
@@ -30,6 +32,8 @@ use App\Models\Historique;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/accompagnement/{slug}', [AccompagnementController::class, 'index'])->name('accompagnement');
+Route::redirect('/type/roi', '/roi', 301);
+Route::redirect('/type/convention', '/convention', 301);
 Route::get('/type/{slug}', [AccompagnementTypeController::class, 'index'])->name('type');
 Route::get('/accompagnement-equipe', [TeamController::class, 'index'])->name('equipe');
 Route::get('/organigramme', [OrganigrammeController::class, 'index'])->name('organigramme');
@@ -39,6 +43,8 @@ Route::get('/années/{years}', [YearController::class, 'photos'])->name('gallery
 Route::get('/historique', [HistoriqueController::class, 'index'])->name('historique');
 Route::get('/actualites-videos', [VideoController::class, 'index'])->name('actualites.videos');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/roi', [RoiController::class, 'index'])->name('roi');
+Route::get('/convention', [ConventionController::class, 'index'])->name('convention');
 Route::get('/actualites', Posts::class)->name('actualites');
 Route::get('/{slug}', [PostController::class, 'index'])->name('post.index');
 Route::get('/download/{model}/{attachment}/{id}', [DownloadController::class, 'download'])->name('download.file');
