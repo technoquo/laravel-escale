@@ -24,6 +24,9 @@
                                         alt="{{ $employee->firstname . '  ' . $employee->lastname }}" />
                                     <h5>{{ $employee->firstname . '  ' . $employee->lastname }}</h5>
                                     <span class="text-primary">{{ $employee->position }}</span>
+                                    @if($employee->phone)
+                                        <p class="mb-0 mt-1 small text-muted">{{ $employee->phone }}</p>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach

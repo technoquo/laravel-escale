@@ -48,6 +48,7 @@ class EmployeeResource extends Resource
                             TextInput::make('firstname')->required(),
                             TextInput::make('lastname')->required(),
                             TextInput::make('position'),
+                            TextInput::make('phone')->tel(),
                             Select::make('administrations_id')
                                 ->relationship('administrations', 'organe')
                                 ->required(),
@@ -105,6 +106,9 @@ class EmployeeResource extends Resource
                     ->label('position')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('phone')
+                    ->label('téléphone')
+                    ->searchable(),
                 TextColumn::make('position.organe')
                     ->label('Administration')
                     ->searchable()
