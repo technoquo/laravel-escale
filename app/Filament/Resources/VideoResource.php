@@ -43,8 +43,10 @@ class VideoResource extends Resource
                                 ->label('Titre')
                                 ->required(),
                             TextInput::make('url')
-                                ->label('URL Cloudinary')
+                                ->label('URL Vimeo')
                                 ->url()
+                                ->placeholder('https://vimeo.com/...')
+                                ->prefix('vimeo.com/')
                                 ->required()
                                 ->columnSpanFull(),
                             DatePicker::make('published_at')
