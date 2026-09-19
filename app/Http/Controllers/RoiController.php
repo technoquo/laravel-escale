@@ -8,7 +8,7 @@ class RoiController extends Controller
 {
     public function index()
     {
-        $rois = Roi::with('items')->get();
+        $rois = Roi::where('status', 1)->with(['items' => fn ($q) => $q->where('status', 1)])->get();
 
         return view('roi', compact('rois'));
     }

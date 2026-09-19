@@ -9,6 +9,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class ItemsRelationManager extends RelationManager
@@ -28,6 +30,11 @@ class ItemsRelationManager extends RelationManager
                 ->label('ID Vimeo')
                 ->placeholder('ex: 123456789')
                 ->columnSpanFull(),
+            Toggle::make('status')
+                ->label('Visible')
+                ->default(true)
+                ->onColor('success')
+                ->offColor('danger'),
         ]);
     }
 
@@ -41,6 +48,11 @@ class ItemsRelationManager extends RelationManager
                     ->searchable(),
                 TextColumn::make('vimeo')
                     ->label('Vimeo'),
+                IconColumn::make('status')
+                    ->label('Visible')
+                    ->boolean()
+                    ->toggleable()
+                    ->sortable(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),

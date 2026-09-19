@@ -9,7 +9,7 @@ class ConventionItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['convention_id', 'text', 'vimeo'];
+    protected $fillable = ['convention_id', 'text', 'vimeo', 'status'];
 
     public function convention()
     {

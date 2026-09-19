@@ -10,6 +10,8 @@ use App\Models\Roi;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use App\Filament\Forms\Components\CloudinaryFileUpload;
@@ -58,6 +60,11 @@ class RoiResource extends Resource
                         ->acceptedFileTypes(['application/pdf'])
                         ->visible(fn ($record) => $record && $record->pdf)
                         ->columnSpanFull(),
+                    Toggle::make('status')
+                        ->label('Visible')
+                        ->default(true)
+                        ->onColor('success')
+                        ->offColor('danger'),
                 ])->columns(2),
             ])->columnSpanFull(),
         ]);
@@ -74,6 +81,11 @@ class RoiResource extends Resource
                 TextColumn::make('items_count')
                     ->label('Éléments')
                     ->counts('items'),
+                IconColumn::make('status')
+                    ->label('Visible')
+                    ->boolean()
+                    ->toggleable()
+                    ->sortable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -8,7 +8,7 @@ class ConventionController extends Controller
 {
     public function index()
     {
-        $conventions = Convention::with('items')->get();
+        $conventions = Convention::where('status', 1)->with(['items' => fn ($q) => $q->where('status', 1)])->get();
 
         return view('convention', compact('conventions'));
     }

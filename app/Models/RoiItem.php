@@ -9,7 +9,7 @@ class RoiItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['roi_id', 'text', 'vimeo'];
+    protected $fillable = ['roi_id', 'text', 'vimeo', 'status'];
 
     public function roi()
     {

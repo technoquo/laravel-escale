@@ -9,7 +9,7 @@ class Roi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'pdf'];
+    protected $fillable = ['title', 'pdf', 'status'];
 
     public function items()
     {
