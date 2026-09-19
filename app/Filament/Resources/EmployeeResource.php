@@ -66,6 +66,7 @@ class EmployeeResource extends Resource
                                 ->label('Cloudinary Slider')
                                 ->preserveFilenames()
                                 ->image()
+                                ->required(fn ($record) => !$record)
                                 ->default(fn ($record) => $record ? $record->image : null)
                                 ->visible(fn ($record) => !$record || !$record->image),
                             Placeholder::make('Preview')

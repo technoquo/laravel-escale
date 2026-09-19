@@ -33,14 +33,16 @@
                 @forelse ($videos as $video)
                     <div class="col-12 col-md-6 col-lg-4">
                         @php
-                            $thumbnail = preg_replace('/\/upload\//', '/upload/so_0/', $video->url);
-                            $thumbnail = preg_replace('/\.(mp4|mov|avi|webm)$/i', '.jpg', $thumbnail);
+                            preg_match('/vimeo\.com\/(?:video\/)?(\d+)/i', $video->url, $m);
+                            $vimeoId   = $m[1] ?? null;
+                            $embedUrl  = $vimeoId ? "https://player.vimeo.com/video/{$vimeoId}?autoplay=1" : '';
+                            $thumbnail = $vimeoId ? "https://vumbnail.com/{$vimeoId}.jpg" : '';
                         @endphp
                         <div class="card h-100 shadow-sm border-0 video-card"
                              role="button"
                              data-bs-toggle="modal"
                              data-bs-target="#videoModal"
-                             data-url="{{ $video->url }}"
+                             data-url="{{ $embedUrl }}"
                              data-title="{{ $video->title }}"
                              data-date="{{ $video->published_at ? \Carbon\Carbon::parse($video->published_at)->translatedFormat('d F Y') : '' }}">
                             <div class="video-thumbnail position-relative">
@@ -91,10 +93,13 @@
                     </div>
                     <div class="modal-body p-3">
                         <div class="ratio ratio-16x9">
-                            <video id="modalVideoPlayer" controls class="w-100 rounded">
-                                <source id="modalVideoSource" src="" type="video/mp4">
-                                Votre navigateur ne supporte pas la lecture vidéo.
-                            </video>
+                            <iframe id="modalVideoPlayer"
+                                    src=""
+                                    frameborder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture"
+                                    allowfullscreen
+                                    class="rounded">
+                            </iframe>
                         </div>
                         <p id="modalVideoDate" class="text-muted small mt-2 mb-0">
                             <i class="fa fa-calendar-alt me-1"></i>
@@ -174,7 +179,7 @@
                 const date = card.getAttribute('data-date');
 
                 document.getElementById('videoModalLabel').textContent = title;
-                document.getElementById('modalVideoSource').src = url;
+                document.getElementById('modalVideoPlayer').src = url;
 
                 const dateEl = document.getElementById('modalVideoDate');
                 if (date) {
@@ -183,17 +188,10 @@
                 } else {
                     dateEl.style.display = 'none';
                 }
-
-                const player = document.getElementById('modalVideoPlayer');
-                player.load();
             });
 
             videoModal.addEventListener('hidden.bs.modal', function () {
-                const player = document.getElementById('modalVideoPlayer');
-                player.pause();
-                player.currentTime = 0;
-                document.getElementById('modalVideoSource').src = '';
-                player.load();
+                document.getElementById('modalVideoPlayer').src = '';
             });
         });
     </script>
