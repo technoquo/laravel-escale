@@ -4,7 +4,8 @@
       "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
       "Bash(php artisan *)",
       "Bash(php -l app/Http/Controllers/VideoController.php)",
-      "Bash(php -l app/Filament/Resources/VideoResource.php)"
+      "Bash(php -l app/Filament/Resources/VideoResource.php)",
+      "Bash(composer show *)"
     ]
   }
 }
