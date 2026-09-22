@@ -59,7 +59,7 @@ class DocumentResource extends Resource
                 TextColumn::make('title'),
                 IconColumn::make('attachment')
                     ->label('Attachment')
-                    ->url(fn (Document $record) => route('download.file',  ['model' => 'document', 'id' => $record->id]))
+                    ->url(fn (Document $record) => route('download.file',  ['model' => 'document', 'attachment' => 'attachment', 'id' => $record->id]))
                     ->trueIcon('heroicon-o-document'),
                 // IconColumn::make('attachment')
                 //     ->label('Attachment')

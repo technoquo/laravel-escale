@@ -14,7 +14,9 @@
       "mcp__plugin_context-mode_context-mode__ctx_execute_file",
       "Bash(curl -s \"https://escaleasbl.be/css/style.css\" -o /tmp/prod_style.css)",
       "Read(//tmp/**)",
-      "Bash(mysqldump *)"
+      "Bash(mysqldump *)",
+      "Bash(Select-String -Path \"C:\\\\Users\\\\User\\\\Herd\\\\escaleasbl\\\\public\\\\css\\\\style.css\" -Pattern \"dropdown-submenu\")",
+      "Bash(Select-Object -First 5)"
     ]
   }
 }

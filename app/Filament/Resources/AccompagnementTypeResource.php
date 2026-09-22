@@ -169,16 +169,16 @@ class AccompagnementTypeResource extends Resource
 
                 IconColumn::make('attachment_roi')
                     ->label('attachment_roi')
-                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => $record->attachment_roi]))
+                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => 'attachment_roi']))
                     ->trueIcon('heroicon-o-document'),
 
                 IconColumn::make('attachment_scheduler')
                     ->label('attachment_scheduler')
-                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => $record->attachment_scheduler]))
+                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => 'attachment_scheduler']))
                     ->trueIcon('heroicon-o-document'),
                 IconColumn::make('attachment_convention')
                     ->label('attachment_convention')
-                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => $record->attachment_convention]))
+                    ->url(fn (AccompagnementType $record) => route('download.file', ['model' => 'accompagnementype', 'id' => $record->id, 'attachment' => 'attachment_convention']))
                     ->trueIcon('heroicon-o-document'),
                 ImageColumn::make('image')
             ])

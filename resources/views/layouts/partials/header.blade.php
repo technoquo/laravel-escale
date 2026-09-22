@@ -78,8 +78,11 @@
                                 <a href="{{ route('accompagnement', 'notre-public') }}" class="dropdown-item">Notre
                                     Public</a>
                                 <div class="dropdown-submenu">
-                                    <a href="{{ route('type', 'accompagnement-individuel') }}"
-                                        class="dropdown-item dropdown-toggle">Accompagnement Individuel</a>
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('type', 'accompagnement-individuel') }}"
+                                            class="dropdown-item flex-grow-1">Accompagnement Individuel</a>
+                                        <span class="dropdown-submenu-toggle pe-3" style="cursor:pointer;"><i class="fas fa-chevron-right fa-xs"></i></span>
+                                    </div>
                                     <div class="dropdown-menu bg-light rounded-0 m-0">
                                         <a href="{{ route('type', 'roi') }}" class="dropdown-item">ROI</a>
                                         <a href="{{ route('type', 'convention') }}" class="dropdown-item">Convention</a>

@@ -51,7 +51,7 @@ class OrganigrammeResource extends Resource
                 TextColumn::make('title'),
                 IconColumn::make('attachment')
                     ->label('Attachment')
-                    ->url(fn (Organigramme $record) => route('download.file',  ['model' => 'organigramme', 'id' => $record->id]))
+                    ->url(fn (Organigramme $record) => route('download.file',  ['model' => 'organigramme', 'attachment' => 'attachment', 'id' => $record->id]))
                     ->trueIcon('heroicon-o-document'),
             ])
             ->filters([

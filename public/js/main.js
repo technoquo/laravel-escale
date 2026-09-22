@@ -134,10 +134,10 @@
 // Nested submenu toggle — desktop y móvil
 // Binding directo (no delegado) para que stopPropagation corte antes de que Bootstrap procese el click
 $(function () {
-    $('.dropdown-submenu > .dropdown-toggle').on('click', function (e) {
+    $('.dropdown-submenu-toggle').on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        var $sub = $(this).next('.dropdown-menu');
+        var $sub = $(this).closest('.dropdown-submenu').find('> .dropdown-menu');
         $('.dropdown-submenu .dropdown-menu').not($sub).removeClass('show');
         $sub.toggleClass('show');
     });
