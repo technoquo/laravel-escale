@@ -99,7 +99,7 @@
                         <a href="{{ route('years') }}"
                             class="escale photos nav-item nav-link {{ request()->is('années') ? 'active' : '' }}">Photos</a>
                         <a href="{{ route('historique') }}" class="escale historique nav-item nav-link">Historique</a>
-                        <a href="{{ route('actualites.videos') }}" class="escale actualit nav-item nav-link {{ request()->is('actualites-videos') ? 'active' : '' }}">Actualités Vidéos</a>
+                        <a href="{{ route('actualites.videos') }}" class="escale actualit nav-item nav-link {{ request()->is('actualites-videos') ? 'active' : '' }}">Savez-vous que?</a>
                         <a href="{{ route('contact') }}" class="escale contact nav-item nav-link">Contact</a>
 
                     </div>

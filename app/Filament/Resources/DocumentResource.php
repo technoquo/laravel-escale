@@ -17,9 +17,6 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\DocumentResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DocumentResource\RelationManagers;
-use App\Filament\Forms\Components\CloudinaryFileUpload;
-use Filament\Forms\Components\Placeholder;
-use Illuminate\Support\HtmlString;
 
 class DocumentResource extends Resource
 {
@@ -44,8 +41,10 @@ class DocumentResource extends Resource
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(true),
-                CloudinaryFileUpload::make('attachment')
+                FileUpload::make('attachment')
                     ->label('Joindre le fichier PDF')
+                    ->disk('public')
+                    ->directory('pdf')
                     ->preserveFilenames()
                     ->acceptedFileTypes(['application/pdf'])
 

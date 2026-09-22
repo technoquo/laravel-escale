@@ -3,7 +3,7 @@
     <main>
         <div class="container py-5">
             <div class="text-center mb-4">
-                <h2 class="fw-bold">Actualités Vidéos</h2>
+                <h2 class="fw-bold">Savez-vous que?</h2>
             </div>
 
             <!-- Recherche -->

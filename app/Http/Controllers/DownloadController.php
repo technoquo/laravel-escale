@@ -6,8 +6,9 @@ use App\Models\Document;
 use App\Models\AccompagnementType;
 use App\Models\Organigramme;
 use Illuminate\Http\Request;
-use Cloudinary\Cloudinary;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 
@@ -53,44 +54,14 @@ class DownloadController extends Controller
             abort(404, 'File not found');
         }
 
-        // Initialize Cloudinary
-        $cloudinary = new Cloudinary([
-            'cloud' => [
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key' => env('CLOUDINARY_API_KEY'),
-                'api_secret' => env('CLOUDINARY_API_SECRET')
-            ],
-        ]);
+        $extension = pathinfo($fileUrl, PATHINFO_EXTENSION) ?: 'pdf';
+        $filename = Str::slug($record->title ?? 'document') . '.' . $extension;
 
-        // Extract the public ID from the Cloudinary URL
-        $publicId = $this->extractPublicId($fileUrl);
+        if (str_starts_with($fileUrl, 'http')) {
+            $downloadUrl = preg_replace('/\/upload\//', '/upload/fl_attachment:' . Str::slug($record->title ?? 'document') . '/', $fileUrl, 1);
+            return redirect()->away($downloadUrl);
+        }
 
-        // Generate the direct download URL for the resource
-        // $response = $cloudinary->adminApi()->asset($publicId, ['sign_url' => true]);
-
-        // $privateDownloadUrl = $response['secure_url'];
-
-        // Generate the private download URL for the resource
-        $privateDownloadUrl = $cloudinary->uploadApi()->downloadArchiveUrl([
-            'public_ids' => [$publicId],
-            'sign_url' => true,
-        ]);
-
-
-
-        // Redirect the user to the private download URL
-        return redirect()->away($privateDownloadUrl);
-    }
-
-    private function extractPublicId($url)
-    {
-        // Extract the public ID from the Cloudinary URL
-        // Assuming the URL structure is https://res.cloudinary.com/{cloud_name}/{resource_type}/upload/{version}/{public_id}.{format}
-        $urlParts = parse_url($url);
-        $pathParts = explode('/', $urlParts['path']);
-        $publicIdWithFormat = end($pathParts); // Get the last part which contains public_id.format
-        $publicId = pathinfo($publicIdWithFormat, PATHINFO_FILENAME); // Extract the public_id without the format
-
-        return $publicId;
+        return Storage::disk('public')->download($fileUrl, $filename);
     }
 }
