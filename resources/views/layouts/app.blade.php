@@ -14,7 +14,7 @@
         content="service, accompagnement, personnes sourdes ou malentendantes, autonomie, langue des signes, bruxelles, social, soutien, parentalité">
     <meta property="og:type" content="website">
     <!-- Favicon -->
-    <link rel="icon" href="https://escaleasbl.be/wp-content/uploads/escale_icon.png" sizes="32x32" />
+    <link rel="icon" href="{{ asset('images/escale_icon.png') }}" sizes="32x32" />
 
 
     <!-- Google Web Fonts -->

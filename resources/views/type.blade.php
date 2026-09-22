@@ -52,4 +52,38 @@
         </div>
     </div> --}}
     <!-- Video Modal End -->
+
+    @if ($accompagnement->slug === 'accompagnement-collectif')
+        <div class="container my-5">
+            <div class="row justify-content-center g-4">
+                @if ($accompagnement->attachment_roi)
+                    <div class="col-auto">
+                        <a href="{{ route('download.file', ['model' => 'accompagnementype', 'attachment' => 'attachment_roi', 'id' => $accompagnement->id]) }}"
+                            class="btn btn-primary" target="_blank">
+                            <i class="fa fa-file-pdf me-2"></i>
+                            {{ $accompagnement->name_type_1 ?? 'ROI' }}
+                        </a>
+                    </div>
+                @endif
+                @if ($accompagnement->attachment_convention)
+                    <div class="col-auto">
+                        <a href="{{ route('download.file', ['model' => 'accompagnementype', 'attachment' => 'attachment_convention', 'id' => $accompagnement->id]) }}"
+                            class="btn btn-primary" target="_blank">
+                            <i class="fa fa-file-pdf me-2"></i>
+                            {{ $accompagnement->name_type_2 ?? 'Convention' }}
+                        </a>
+                    </div>
+                @endif
+                @if ($accompagnement->attachment_scheduler)
+                    <div class="col-auto">
+                        <a href="{{ route('download.file', ['model' => 'accompagnementype', 'attachment' => 'attachment_scheduler', 'id' => $accompagnement->id]) }}"
+                            class="btn btn-primary" target="_blank">
+                            <i class="fa fa-file-pdf me-2"></i>
+                            {{ $accompagnement->name_type_3 ?? 'Horaire' }}
+                        </a>
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
 </x-app-layout>
