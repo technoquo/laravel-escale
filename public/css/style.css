@@ -730,7 +730,7 @@ body{
         opacity: 1;
     }
 
-    /* Nested submenu — aparece a la derecha al hacer click */
+    /* Nested submenu — aparece a la derecha al hacer hover */
     .navbar .dropdown-submenu {
         position: relative;
     }
@@ -742,6 +742,10 @@ body{
         left: 100%;
         margin-top: 0;
         min-width: 160px;
+    }
+
+    .navbar .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
     }
 
     .navbar .dropdown-submenu > .dropdown-menu.show {
