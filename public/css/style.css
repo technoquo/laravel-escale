@@ -753,17 +753,17 @@ body{
     }
 }
 
-/* Nested submenu — móvil (colapso vertical) */
+/* Nested submenu — móvil (siempre visible) */
 @media (max-width: 991.98px) {
     .dropdown-submenu > .dropdown-menu {
-        display: none;
+        display: block;
         position: static;
         padding-left: 1rem;
         box-shadow: none;
     }
 
-    .dropdown-submenu > .dropdown-menu.show {
-        display: block;
+    .dropdown-submenu-toggle {
+        display: none;
     }
 }
 
