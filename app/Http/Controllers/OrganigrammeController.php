@@ -10,10 +10,10 @@ class OrganigrammeController extends Controller
     public function index()
     {
 
-        $pdf = Organigramme::all()->first();
+        $organigramme = Organigramme::first();
 
         return view('organigramme', [
-            'pdf' => $pdf
+            'organigramme' => $organigramme
         ]);
     }
 }

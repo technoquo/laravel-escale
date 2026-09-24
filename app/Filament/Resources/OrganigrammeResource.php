@@ -37,9 +37,9 @@ class OrganigrammeResource extends Resource
                     TextInput::make('title')
                         ->label('titre'),
                     CloudinaryFileUpload::make('attachment')
-                        ->label('Joindre le fichier PDF')
+                        ->label('Joindre l\'image (PNG, JPG)')
                         ->preserveFilenames()
-                        ->acceptedFileTypes(['application/pdf'])
+                        ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
                 ])
             ]);
     }
